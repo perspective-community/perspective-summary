@@ -1,41 +1,53 @@
 {
   "name": "@finos/perspective-viewer-summary",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "The `<perspective-viewer>` Custom Element, frontend for Perspective.js",
   "repository": "git@github.com:timkpaine/perspective-summary.git",
   "author": "Tim Paine <t.paine154@gmail.com>",
-  "license": "Apache 2.0",
-  "private": true,
-  "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^27.3.1",
-    "babel-plugin-transform-custom-element-classes": "^0.1.0",
-    "concurrently": "^6.4.0",
-    "cpy": "^8.1.2",
-    "eslint": "^8.3.0",
-    "eslint-config-airbnb": "^19.0.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-node": "^0.3.6",
-    "eslint-plugin-css-modules": "^2.11.0",
-    "eslint-plugin-html": "^6.2.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jest": "^25.3.0",
-    "eslint-plugin-json": "^3.1.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^5.1.1",
-    "eslint-plugin-react": "^7.27.1",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "less": "^4.1.2",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.5.0",
-    "stylelint": "^14.1.0"
+  "license": "Apache-2.0",
+  "unpkg": "dist/cdn/perspective-viewer.js",
+  "jsdelvr": "dist/cdn/perspective-viewer.js",
+  "exports": {
+      ".": {
+          "require": "./dist/umd/perspective-viewer.js",
+          "import": "./dist/umd/perspective-viewer.js"
+      },
+      "./dist/": "./dist/",
+      "./cdn/": "./dist/cdn/",
+      "./esm/": "./dist/esm/",
+      "./umd/": "./dist/umd/",
+      "./pkg/": "./dist/pkg/",
+      "./src/": "./src/",
+      "./package.json": "./package.json"
+  },
+  "files": [
+      "dist/**/*",
+      "src/**/*"
+  ],
+  "types": "dist/esm/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+      "build": "node ./build.js",
+      "clean": "rimraf dist && rimraf pkg && rimraf build",
+      "clean:screenshots": "rimraf \"test/screenshots/**/*.@(failed|diff).png\"",
+      "docs": "npm-run-all docs:build docs:concat docs:deploy",
+      "docs:build": "typedoc --hideBreadcrumbs --out dist/docs --readme none --excludePrivate src/ts/perspective-viewer.ts",
+      "docs:concat": "node ./docs.js",
+      "docs:deploy": "(echo \"---\nid: perspective-viewer\ntitle: perspective-viewer API\n---\n\n\"; cat README.md) > ../../docs/obj/perspective-viewer.md",
+      "fix": "yarn lint --fix && cargo fmt",
+      "lint": "eslint src/ts",
+      "test:build:rust": "cpy ../../packages/perspective/dist/umd/perspective.js dist/pkg/",
+      "test:build:js": "cpy \"test/html/*\" dist/umd && cpy \"test/csv/*\" dist/umd && cpy \"test/css/*\" dist/umd",
+      "test:build": "npm-run-all test:build:*",
+      "test:run:rust": "HEADLESS_TIMEOUT=40 wasm-pack test --chrome --headless",
+      "test:run": "jest --rootDir=. --config=../../tools/perspective-test/jest.config.js --color --noStackTrace 2>&1",
+      "test:clean": "rm perspective.csv || true",
+      "test": "yarn test:build && npm-run-all -p test:run:rust test:run && yarn test:clean"
   },
   "dependencies": {
-    "@finos/perspective": "^1.0.3",
-    "@finos/perspective-viewer": "^1.0.3"
-  }
+      "@finos/perspective": "^1.0.3"
+  },
+  "devDependencies": {}
 }
