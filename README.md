@@ -1,2 +1,2 @@
 # perspective-summary
-A `perspective-viewer` that provides summary statistics
+A `perspective-viewer` plugin that provides summary statistics.

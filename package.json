@@ -25,10 +25,17 @@
     "bench:build": ":",
     "bench:run": ":",
     "build": "node build.js",
-    "test:build": "cpy \"test/html/*\" dist/umd",
-    "test:run": "jest --rootDir=. --config=tools/perspective-test/jest.config.js --color",
+    "test:build:mkdir": "mkdirp dist/test",
+    "test:build:summary": "cpy \"dist/cdn/*\" dist/test",
+    "test:build:html": "cpy \"test/html/*\" dist/test",
+    "test:build:csv": "cpy \"tools/test/*.csv\" dist/test",
+    "test:build:psp": "cpy \"node_modules/@finos/perspective/dist/cdn/*\" dist/test",
+    "test:build:viewer": "cpy \"node_modules/@finos/perspective-viewer/dist/cdn/*\" dist/test",
+    "test:build:viewercss": "cpy \"node_modules/@finos/perspective-viewer/dist/css/*.css\" dist/test",
+    "test:build": "npm-run-all test:build:*",
+    "test:run": "jest --rootDir=. --config=tools/test/jest.config.js --color",
     "test": "npm-run-all test:build test:run",
-    "watch": "npm-run-all -p watch:*",
+    "watch": ":",
     "clean": "rimraf dist",
     "clean:screenshots": "rimraf \"test/screenshots/**/*.@(failed|diff).png\""
   },
@@ -41,5 +48,21 @@
     "@finos/perspective-viewer": "^1.4.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^25.1.0",
+    "cpy-cli": "^4.1.0",
+    "esbuild": "^0.14.43",
+    "esbuild-plugin-less": "^1.1.7",
+    "html-loader-jest": "^0.2.1",
+    "jest": "^25.1.0",
+    "jest-junit": "^10.0.0",
+    "mkdirp": "^1.0.4",
+    "npm-run-all": "^4.1.5",
+    "puppeteer": "^13.1.3",
+    "term-img": "^4.1.0",
+    "xml-formatter": "^2.6.1"
   }
 }
