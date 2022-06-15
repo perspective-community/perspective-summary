@@ -1,0 +1,45 @@
+{
+  "name": "@finos/perspective-viewer-summary",
+  "version": "0.0.1",
+  "description": "A Perspective plugin for single values",
+  "repository": "git@github.com:timkpaine/perspective-summary.git",
+  "author": "Tim Paine <t.paine154@gmail.com>",
+  "unpkg": "dist/umd/perspective-viewer-summary.js",
+  "main": "dist/umd/perspective-viewer-summary.js",
+  "jsdelivr": "dist/umd/perspective-viewer-summary.js",
+  "exports": {
+    ".": {
+      "require": "./dist/umd/perspective-viewer-summary.js",
+      "import": "./dist/esm/perspective-viewer-summary.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*",
+    "index.d.ts"
+  ],
+  "types": "index.d.ts",
+  "scripts": {
+    "bench": "npm-run-all bench:build bench:run",
+    "bench:build": ":",
+    "bench:run": ":",
+    "build": "node build.js",
+    "test:build": "cpy \"test/html/*\" dist/umd",
+    "test:run": "jest --rootDir=. --config=tools/perspective-test/jest.config.js --color",
+    "test": "npm-run-all test:build test:run",
+    "watch": "npm-run-all -p watch:*",
+    "clean": "rimraf dist",
+    "clean:screenshots": "rimraf \"test/screenshots/**/*.@(failed|diff).png\""
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@finos/perspective": "^1.4.0",
+    "@finos/perspective-viewer": "^1.4.0"
+  },
+  "devDependencies": {
+  }
+}
