@@ -1,37 +1,19 @@
-import {View} from "@finos/perspective";
+import type { IPerspectiveViewerPlugin } from "@finos/perspective-viewer";
 
 declare global {
-    interface CustomElementRegistry {
-        get(
-            tagName: "perspective-viewer-summary"
-        ): PerspectiveViewerSummaryPluginElement;
+  interface CustomElementRegistry {
+    get(
+      tagName: "perspective-viewer-summary"
+    ): HTMLPerspectiveViewerExamplePluginElement;
 
-        whenDefined(
-            tagName: "perspective-viewer-datagrid"
-        ): Promise<PerspectiveViewerDatagridPluginElement>;
-    }
+    // TODO is this needed?
+    whenDefined(tagName: "perspective-viewer-summary"): Promise<void>;
+  }
 }
 
-export declare class PerspectiveViewerDatagridPluginElement extends HTMLElement {
-    public readonly content: HTMLElement;
+interface HTMLPerspectiveViewerSummaryPluginElement
+  extends IPerspectiveViewerPlugin {}
 
-    // getters accessors
-    public get name(): string;
-
-    // customElements methods
-    protected connectedCallback(): void;
-    protected disconnectedCallback(): void;
-
-    // view related methods
-    public activate(view: View): Promise<void>;
-    public draw(view: View): Promise<void>;
-    public update(view: View): Promise<void>;
-    public restyle(view: View): Promise<void>;
-
-    // other public methods
-    public resize(): Promise<void>;
-    public clear(): Promise<void>;
-    public delete(): void;
-    public save(): Promise<void>;
-    public restore(token: unknown): Promise<void>;
-}
+export declare class HTMLPerspectiveViewerSummaryPluginElement
+  extends HTMLElement
+  implements IPerspectiveViewerPlugin {}

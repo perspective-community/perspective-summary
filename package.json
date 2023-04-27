@@ -2,8 +2,9 @@
   "name": "@finos/perspective-viewer-summary",
   "version": "0.0.1",
   "description": "A Perspective plugin for single values",
-  "repository": "git@github.com:timkpaine/perspective-summary.git",
+  "repository": "git@github.com:perspective-community/perspective-summary.git",
   "author": "Tim Paine <t.paine154@gmail.com>",
+  "license": "Apache-2.0",
   "unpkg": "dist/umd/perspective-viewer-summary.js",
   "main": "dist/umd/perspective-viewer-summary.js",
   "jsdelivr": "dist/umd/perspective-viewer-summary.js",
@@ -21,48 +22,29 @@
   ],
   "types": "index.d.ts",
   "scripts": {
-    "bench": "npm-run-all bench:build bench:run",
-    "bench:build": ":",
-    "bench:run": ":",
     "build": "node build.js",
-    "test:build:mkdir": "mkdirp dist/test",
-    "test:build:summary": "cpy \"dist/cdn/*\" dist/test",
-    "test:build:html": "cpy \"test/html/*\" dist/test",
-    "test:build:csv": "cpy \"tools/test/*.csv\" dist/test",
-    "test:build:psp": "cpy \"node_modules/@finos/perspective/dist/cdn/*\" dist/test",
-    "test:build:viewer": "cpy \"node_modules/@finos/perspective-viewer/dist/cdn/*\" dist/test",
-    "test:build:viewercss": "cpy \"node_modules/@finos/perspective-viewer/dist/css/*.css\" dist/test",
-    "test:build": "npm-run-all test:build:*",
-    "test:run": "jest --rootDir=. --config=tools/test/jest.config.js --color",
-    "test": "npm-run-all test:build test:run",
-    "watch": ":",
-    "clean": "rimraf dist",
-    "clean:screenshots": "rimraf \"test/screenshots/**/*.@(failed|diff).png\""
+    "lint": "prettier --check \"examples/*.js\" \"examples/*.html\" \"src/js/*.js\" \"src/less/*.less\" \"tests/*.js\" \"*.js\" \"*.json\" \"index.d.ts\" \"*.md\"",
+    "fix": "prettier --write  \"examples/*.js\" \"examples/*.html\" \"src/js/*.js\" \"src/less/*.less\" \"tests/*.js\" \"*.js\" \"*.json\" \"index.d.ts\" \"*.md\"",
+    "test": "playwright test",
+    "start:tests": "http-server -p 3000 ",
+    "start:examples": "http-server -p 3000 -o examples/",
+    "clean": "rimraf dist playwright-report"
   },
   "publishConfig": {
     "access": "public"
   },
-  "license": "Apache-2.0",
   "dependencies": {
-    "@finos/perspective": "^1.4.0",
-    "@finos/perspective-viewer": "^1.4.0"
+    "@finos/perspective": "^2.0.1",
+    "@finos/perspective-viewer": "^2.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
-    "babel-eslint": "^10.0.3",
-    "babel-jest": "^25.1.0",
-    "cpy-cli": "^4.1.0",
+    "@finos/perspective-esbuild-plugin": "^2.0.1",
+    "@playwright/test": "^1.33.0",
+    "@prospective.co/procss": "^0.1.12",
     "esbuild": "^0.14.43",
     "esbuild-plugin-less": "^1.1.7",
-    "html-loader-jest": "^0.2.1",
-    "jest": "^25.1.0",
-    "jest-junit": "^10.0.0",
-    "mkdirp": "^1.0.4",
-    "npm-run-all": "^4.1.5",
-    "puppeteer": "^13.1.3",
-    "term-img": "^4.1.0",
-    "xml-formatter": "^2.6.1"
+    "http-server": "^14.1.1",
+    "playwright": "^1.33.0",
+    "prettier": "^2.8.8"
   }
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      type="module"
+      src="../node_modules/@finos/perspective/dist/umd/perspective.js"
+    ></script>
+    <script
+      type="module"
+      src="../node_modules/@finos/perspective-viewer/dist/umd/perspective-viewer.js"
+    ></script>
+    <script
+      type="module"
+      src="../dist/umd/perspective-viewer-summary.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="../node_modules/@finos/perspective-viewer/dist/umd/themes.css"
+    />
+    <script type="module" src="load-viewer-csv.js"></script>
+
+    <style>
+      perspective-viewer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <perspective-viewer></perspective-viewer>
+  </body>
+</html>

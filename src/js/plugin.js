@@ -7,60 +7,61 @@
  *
  */
 
-import STYLE from "../less/index.less";
+import STYLE from "../../dist/css/perspective-viewer-summary.css";
 
 export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    connectedCallback() {
-        if (!this._container) {
-            this._container = document.createElement("div");
-        }
-        this.parentElement.appendChild(this._container);
+  connectedCallback() {
+    if (!this._container) {
+      this._container = document.createElement("div");
     }
+    this.parentElement.appendChild(this._container);
+  }
 
-    disconnectedCallback() {
-    }
+  disconnectedCallback() {}
 
-    async activate(view) {
-    }
+  async activate(view) {}
 
-    get name() {
-        return "Summary";
-    }
+  get name() {
+    return "Summary";
+  }
 
-    async draw(view) {
-    }
+  get select_mode() {
+    return "toggle";
+  }
 
-    async update(view) {
-    }
+  get min_config_columns() {
+    return 1;
+  }
 
-    async resize() {
-    }
+  async draw(view) {
+    const count = await view.num_rows();
+    this.innerHTML = `View has ${count} rows`;
+  }
 
-    async clear() {
-    }
+  async update(view) {}
 
-    save() {
-    }
+  async resize() {}
 
-    restore(token) {
-    }
+  async clear() {}
 
-    async restyle(view) {
-    }
+  save() {}
 
-    delete() {
-    }
+  restore(token) {}
 
-    // Private
+  async restyle(view) {}
+
+  delete() {}
+
+  // Private
 }
 
 customElements.define(
-    "perspective-viewer-summary",
-    PerspectiveViewerSummaryPluginElement
+  "perspective-viewer-summary",
+  PerspectiveViewerSummaryPluginElement
 );
 
 /**
@@ -69,9 +70,9 @@ customElements.define(
  *
  */
 function _register_global_styles() {
-    const style = document.createElement("style");
-    style.textContent = STYLE;
-    document.head.insertBefore(style, document.head.firstChild);
+  const style = document.createElement("style");
+  style.textContent = STYLE;
+  document.head.insertBefore(style, document.head.firstChild);
 }
 
 /******************************************************************************
@@ -81,9 +82,9 @@ function _register_global_styles() {
  */
 
 function register_element() {
-    customElements
-        .get("perspective-viewer")
-        .registerPlugin("perspective-viewer-summary");
+  customElements
+    .get("perspective-viewer")
+    .registerPlugin("perspective-viewer-summary");
 }
 
 customElements.whenDefined("perspective-viewer").then(register_element);
