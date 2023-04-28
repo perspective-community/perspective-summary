@@ -1,8 +1,49 @@
-/******************************************************************************
- *
- * Copyright (c) 2017, the Perspective Authors.
- *
- * This file is part of the Perspective library, distributed under the terms of
- * the Apache License 2.0.  The full license can be found in the LICENSE file.
- *
- */
+.summary-container {
+  display: flex;
+}
+
+.align-horizontal {
+  flex-direction: row;
+}
+
+.align-vertical {
+  flex-direction: column;
+}
+
+.summary-column {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 5px;
+}
+
+.summary-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-size: small;
+}
+
+.summary-header::after {
+  content: "";
+  height: 1px;
+  width: 90%;
+  border-bottom: 1px solid var(--inactive--color, #6e6e6e);
+}
+
+.summary-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-size: large;
+}
