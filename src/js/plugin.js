@@ -214,6 +214,18 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
             // truncate the string to `n` digits
             datum = new String(datum).substring(0, +formatter);
           }
+        } else {
+          // default formats
+          if (["integer", "float"].indexOf(this._schema[col]) >= 0) {
+            // do nothing
+          } else if (["boolean"].indexOf(this._schema[col]) >= 0) {
+            // do nothing
+          } else if (["datetime", "date"].indexOf(this._schema[col]) >= 0) {
+            // format
+            datum = dayjs(+datum).format();
+          } else {
+            // do nothing
+          }
         }
 
         // the data itself

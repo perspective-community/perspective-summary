@@ -6,6 +6,4 @@ A `perspective-viewer` plugin that provides summary information.
 [![License](https://img.shields.io/github/license/perspective-community/perspective-summary.svg)](https://github.com/perspective-community/perspective-summary/)
 [![npm](https://img.shields.io/npm/v/perspective-summary)](https://www.npmjs.com/package/perspective-summary)
 
-![](https://raw.githubusercontent.com/perspective-community/perspective-summary/main/docs/img/hor.png)
-
-![](https://raw.githubusercontent.com/perspective-community/perspective-summary/main/docs/img/ver.png)
+![](https://raw.githubusercontent.com/perspective-community/perspective-summary/main/docs/img/demo.gif)
