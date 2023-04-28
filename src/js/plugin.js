@@ -112,7 +112,6 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
       ...this._config,
       plugin_config: { ...this._config.plugin_config, ...token },
     };
-    console;
     this.format();
   }
 
@@ -218,8 +217,14 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
           }
         }
 
-        // the data itself
-        data_data.textContent = datum;
+        if (["datetime", "date"].indexOf(this._schema[col]) >= 0) {
+          // the data itself
+          data_data.textContent = new Date(+datum).toString();
+        } else {
+          // the data itself
+          data_data.textContent = datum;
+        }
+
         // add classes to data if we have it and we have data
         if (
           this._config.plugin_config.data_classes &&
