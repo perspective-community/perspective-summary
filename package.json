@@ -35,7 +35,8 @@
   },
   "dependencies": {
     "@finos/perspective": "^2.0.1",
-    "@finos/perspective-viewer": "^2.0.1"
+    "@finos/perspective-viewer": "^2.0.1",
+    "dayjs": "^1.11.7"
   },
   "devDependencies": {
     "@finos/perspective-esbuild-plugin": "^2.0.1",

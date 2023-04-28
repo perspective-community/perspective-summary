@@ -1,5 +1,5 @@
 import STYLE from "../../dist/css/perspective-viewer-summary.css";
-
+import dayjs from "dayjs";
 const _ALIGN_DEFAULT = "horizontal";
 
 export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
@@ -8,7 +8,7 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
     /*
      * Config:
      *  align: str = "vertical" | "horizontal",  // align items vertically or horizontally, default is horizontal
-     *  truncate: {[col: str]: int }, // round numbers, truncate strings
+     *  format: {[col: str]: int|str }, // round numbers, truncate strings, format dates
      *  header_class: str, // css class to add to all headers
      *  data_class: str, // css class to add to all datas
      *  header_classes: {[col: str]: str}, // css class to add to specific headers
@@ -17,7 +17,7 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
     this._config = {
       plugin_config: {
         align: _ALIGN_DEFAULT,
-        truncate: {},
+        format: {},
         header_class: "",
         data_class: "",
         header_classes: {},
@@ -194,36 +194,42 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
           aggregations[col] || (Number.isNaN(datum) ? "count" : "sum");
         data_data.title = `${aggregate}("${col}")`;
 
-        // truncate the data if necessary
+        // format the data if necessary
         if (
-          this._config.plugin_config.truncate &&
-          this._config.plugin_config.truncate[col] >= 0
+          this._config.plugin_config.format &&
+          this._config.plugin_config.format[col]
         ) {
+          // grab formatter
+          const formatter = this._config.plugin_config.format[col];
+
           if (["integer", "float"].indexOf(this._schema[col]) >= 0) {
             // round to `n` decimals
-            datum = Number(datum).toFixed(
-              this._config.plugin_config.truncate[col]
-            );
-          } else if (
-            ["boolean", "datetime", "date"].indexOf(this._schema[col]) >= 0
-          ) {
+            datum = Number(datum).toFixed(+formatter);
+          } else if (["boolean"].indexOf(this._schema[col]) >= 0) {
             // do nothing
+          } else if (["datetime", "date"].indexOf(this._schema[col]) >= 0) {
+            // format
+            datum = dayjs(+datum).format(formatter);
           } else {
             // truncate the string to `n` digits
-            datum = new String(datum).substring(
-              0,
-              this._config.plugin_config.truncate[col]
-            );
+            datum = new String(datum).substring(0, +formatter);
+          }
+        } else {
+          // default formats
+          if (["integer", "float"].indexOf(this._schema[col]) >= 0) {
+            // do nothing
+          } else if (["boolean"].indexOf(this._schema[col]) >= 0) {
+            // do nothing
+          } else if (["datetime", "date"].indexOf(this._schema[col]) >= 0) {
+            // format
+            datum = dayjs(+datum).format();
+          } else {
+            // do nothing
           }
         }
 
-        if (["datetime", "date"].indexOf(this._schema[col]) >= 0) {
-          // the data itself
-          data_data.textContent = new Date(+datum).toString();
-        } else {
-          // the data itself
-          data_data.textContent = datum;
-        }
+        // the data itself
+        data_data.textContent = datum;
 
         // add classes to data if we have it and we have data
         if (
