@@ -44,10 +44,10 @@ test.describe("Summary with superstore data set - basics", () => {
           data_classes: {},
           header_class: "",
           header_classes: {},
-          truncate: {
+          format: {
             Quantity: 2,
             "Order ID": 7,
-            "Order Date": 5,
+            "Order Date": "YYYY-MM-DD HH:mm:ss",
           },
         },
         settings: true,
