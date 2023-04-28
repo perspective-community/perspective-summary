@@ -5,9 +5,29 @@ const _ALIGN_DEFAULT = "horizontal";
 export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
   constructor() {
     super();
+    /*
+     * Config:
+     *  align: str = "vertical" | "horizontal",  // align items vertically or horizontally, default is horizontal
+     *  truncate: {[col: str]: int }, // round numbers, truncate strings
+     *  header_class: str, // css class to add to all headers
+     *  data_class: str, // css class to add to all datas
+     *  header_classes: {[col: str]: str}, // css class to add to specific headers
+     *  data_classes: {[col: str]: str}, //  css class to add to specific datas
+     */
     this._config = {
-      align: _ALIGN_DEFAULT,
+      plugin_config: {
+        align: _ALIGN_DEFAULT,
+        truncate: {},
+        header_class: "",
+        data_class: "",
+        header_classes: {},
+        data_classes: {},
+      },
     };
+
+    // store data and dom elements
+    this._data = null;
+    this._schema = null;
   }
 
   connectedCallback() {
@@ -20,7 +40,9 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
 
   disconnectedCallback() {}
 
-  async activate(view) {}
+  async activate(view) {
+    // nothing to do
+  }
 
   get name() {
     // Plugin name is "Summary"
@@ -45,8 +67,19 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
   }
 
   async render(view) {
-    // pull columns
-    const columns = (await view.get_config()).columns;
+    // pull config
+    const config = await view.get_config();
+    this._config = {
+      ...this._config,
+      ...config,
+      plugin_config: { ...this._config.plugin_config, ...config.plugin_config },
+    };
+    this._schema = await view.schema();
+
+    // get the columns being displayed
+    const columns = config.columns;
+
+    // access the first row of data, the total aggregation
     const data_window = {
       start_row: 0,
       start_col: 0,
@@ -54,9 +87,47 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
       end_col: columns.length,
       id: false,
     };
-    const data = await view.to_columns(data_window);
-    const is_pivoted = data.__ROW_PATH__ && data.__ROW_PATH__.length > 0;
 
+    // get the data itself
+    this._data = await view.to_columns(data_window);
+
+    // set class based on alignment
+    this.format();
+  }
+
+  async resize() {
+    // TODO nothing yet
+  }
+
+  async clear() {
+    // TODO
+  }
+
+  save() {
+    return { ...this._config };
+  }
+
+  restore(token) {
+    this._config = {
+      ...this._config,
+      plugin_config: { ...this._config.plugin_config, ...token },
+    };
+    console;
+    this.format();
+  }
+
+  format() {
+    // get the columns being displayed
+    const columns = this._config.columns;
+
+    // get the aggregations for those columns
+    const aggregations = this._config.aggregates;
+
+    // if we're not pivoted, we don't display data
+    const is_pivoted =
+      this._data.__ROW_PATH__ && this._data.__ROW_PATH__.length > 0;
+
+    // keep in a map so we can format things individuallyt
     const _entries = new Map();
 
     columns.forEach((col) => {
@@ -70,6 +141,21 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
 
       const header_data = document.createElement("span");
       header_data.classList.add("summary-header-text");
+
+      // add user provided classes
+      if (this._config.plugin_config.header_class) {
+        header_data.classList.add(this._config.plugin_config.header_class);
+      }
+      if (
+        this._config.plugin_config.header_classes &&
+        this._config.plugin_config.header_classes[col]
+      ) {
+        header_data.classList.add(
+          this._config.plugin_config.header_classes[col]
+        );
+      }
+
+      // put column name in content
       header_data.textContent = col;
       header_container.appendChild(header_data);
 
@@ -80,7 +166,18 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
       const data_data = document.createElement("span");
       data_data.classList.add("summary-data-text");
 
+      // add user provided classes
+      if (this._config.plugin_config.data_class) {
+        data_data.classList.add(this._config.plugin_config.data_class);
+      }
+      if (
+        this._config.plugin_config.data_classes &&
+        this._config.plugin_config.data_classes[col]
+      ) {
+        data_data.classList.add(this._config.plugin_config.data_classes[col]);
+      }
       data_container.appendChild(data_data);
+
       // add to container
       col_container.appendChild(header_container);
       col_container.appendChild(data_container);
@@ -89,13 +186,57 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
       _entries.set(col, col_container);
 
       if (is_pivoted) {
-        data_data.textContent = data[col];
+        // pull the data from the first row
+        let datum = this._data[col];
+
+        // show the aggregation type in tooltip, using type-specific variants
+        // NOTE: don't pull from schema as this will reflect the aggregate's type
+        const aggregate =
+          aggregations[col] || (Number.isNaN(datum) ? "count" : "sum");
+        data_data.title = `${aggregate}("${col}")`;
+
+        // truncate the data if necessary
+        if (
+          this._config.plugin_config.truncate &&
+          this._config.plugin_config.truncate[col] >= 0
+        ) {
+          if (["integer", "float"].indexOf(this._schema[col]) >= 0) {
+            // round to `n` decimals
+            datum = Number(datum).toFixed(
+              this._config.plugin_config.truncate[col]
+            );
+          } else if (
+            ["boolean", "datetime", "date"].indexOf(this._schema[col]) >= 0
+          ) {
+            // do nothing
+          } else {
+            // truncate the string to `n` digits
+            datum = new String(datum).substring(
+              0,
+              this._config.plugin_config.truncate[col]
+            );
+          }
+        }
+
+        // the data itself
+        data_data.textContent = datum;
+        // add classes to data if we have it and we have data
+        if (
+          this._config.plugin_config.data_classes &&
+          this._config.plugin_config.data_classes[col]
+        ) {
+          data_data.classList.add(this._config.plugin_config.data_classes[col]);
+        }
       } else {
         data_data.textContent = "--";
       }
 
       // set class based on alignment
-      this.align();
+      this._container.classList.remove("align-horizontal");
+      this._container.classList.remove("align-vertical");
+      this._container.classList.add(
+        `align-${this._config.plugin_config.align || _ALIGN_DEFAULT}`
+      );
     });
 
     // clear it out
@@ -107,32 +248,6 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
     _entries.forEach((value, key) => {
       this._container.appendChild(value);
     });
-  }
-
-  async resize() {
-    // TODO nothing yet
-  }
-
-  async clear() {
-    // TODO
-  }
-
-  save() {
-    // TODO
-    return { ...this._config };
-  }
-
-  restore(token) {
-    // TODO
-    const align = token.align || _ALIGN_DEFAULT;
-    this._config.align = align;
-    this.align();
-  }
-
-  align() {
-    this._container.classList.remove("align-horizontal");
-    this._container.classList.remove("align-vertical");
-    this._container.classList.add(`align-${this._config.align}`);
   }
 
   async restyle(view) {
