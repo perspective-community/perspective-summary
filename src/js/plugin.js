@@ -1,6 +1,12 @@
-import STYLE from "../../dist/css/perspective-viewer-summary.css";
+import DEFAULT from "../../dist/css/perspective-viewer-summary.css";
+import MINIMAL from "../../dist/css/perspective-viewer-summary-minimal.css";
 import dayjs from "dayjs";
 const _ALIGN_DEFAULT = "horizontal";
+
+const THEMES = {
+  default: DEFAULT,
+  minimal: MINIMAL,
+};
 
 export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
   constructor() {
@@ -22,20 +28,31 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
         data_class: "",
         header_classes: {},
         data_classes: {},
+        theme: "default",
       },
     };
 
     // store data and dom elements
     this._data = null;
     this._schema = null;
+    this._container = null;
+    this._style = null;
+    this._loaded = false;
   }
 
   connectedCallback() {
-    if (!this._container) {
+    if (!this._loaded) {
+      this._shadow = this.attachShadow({ mode: "open" });
+
       this._container = document.createElement("div");
       this._container.classList.add("summary-container");
+
+      this._style = document.createElement("style");
+
+      this._shadow.appendChild(this._style);
+      this._shadow.appendChild(this._container);
     }
-    this.appendChild(this._container);
+    this._loaded = true;
   }
 
   disconnectedCallback() {}
@@ -116,6 +133,14 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
   }
 
   format() {
+    if (!this._loaded) {
+      return;
+    }
+
+    // setup style
+    this._style.textContent =
+      THEMES[this._config.plugin_config.theme] || DEFAULT;
+
     // get the columns being displayed
     const columns = this._config.columns;
 
@@ -288,4 +313,3 @@ function register_element() {
 }
 
 customElements.whenDefined("perspective-viewer").then(register_element);
-_register_global_styles();

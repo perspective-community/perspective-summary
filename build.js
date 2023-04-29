@@ -60,10 +60,19 @@ function add(builder, path) {
 async function compile_css() {
   fs.mkdirSync("dist/css", { recursive: true });
   const builder1 = new BuildCss("");
-  add(builder1, "./index.less");
+  add(builder1, "./default.less");
+  add(builder1, "./common.less");
   fs.writeFileSync(
     "dist/css/perspective-viewer-summary.css",
-    builder1.compile().get("index.css")
+    builder1.compile().get("default.css")
+  );
+
+  const builder2 = new BuildCss("");
+  add(builder2, "./common.less");
+  add(builder2, "./minimal.less");
+  fs.writeFileSync(
+    "dist/css/perspective-viewer-summary-minimal.css",
+    builder2.compile().get("minimal.css")
   );
 }
 
