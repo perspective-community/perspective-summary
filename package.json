@@ -1,6 +1,6 @@
 {
   "name": "perspective-summary",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Perspective plugin for single values",
   "repository": "git@github.com:perspective-community/perspective-summary.git",
   "author": "Tim Paine <t.paine154@gmail.com>",
