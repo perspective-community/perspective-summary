@@ -1,11 +1,23 @@
 import DEFAULT from "../../dist/css/perspective-viewer-summary.css";
 import MINIMAL from "../../dist/css/perspective-viewer-summary-minimal.css";
+import MODERN from "../../dist/css/perspective-viewer-summary-modern.css";
 import dayjs from "dayjs";
-const _ALIGN_DEFAULT = "horizontal";
+
+const _ALIGN_OPTIONS = ["horizontal", "vertical"];
+const _ALIGN_DEFAULT = _ALIGN_OPTIONS[0];
+const _ALIGN_HEADER_OPTIONS = {
+  horizontal: ["top", "bottom"],
+  vertical: ["top", "bottom", "left", "right"],
+};
+const _ALIGN_HEADER_DEFAULTS = {
+  horizontal: _ALIGN_HEADER_OPTIONS.horizontal[0],
+  vertical: _ALIGN_HEADER_OPTIONS.vertical[0],
+};
 
 const THEMES = {
   default: DEFAULT,
   minimal: MINIMAL,
+  modern: MODERN,
 };
 
 export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
@@ -23,6 +35,7 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
     this._config = {
       plugin_config: {
         align: _ALIGN_DEFAULT,
+        align_header: undefined,
         format: {},
         header_class: "",
         data_class: "",
@@ -132,10 +145,30 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
     this.format();
   }
 
+  validate() {
+    if (_ALIGN_OPTIONS.indexOf(this._config.plugin_config.align) < 0) {
+      this._config.plugin_config.align = _ALIGN_DEFAULT;
+    }
+
+    if (
+      _ALIGN_HEADER_OPTIONS[this._config.plugin_config.align].indexOf(
+        this._config.plugin_config.align_header
+      ) < 0
+    ) {
+      this._config.plugin_config.align_header =
+        _ALIGN_HEADER_DEFAULTS[this._config.plugin_config.align];
+    }
+
+    this._config.plugin_config.format = this._config.plugin_config.format || {};
+  }
+
   format() {
     if (!this._loaded) {
       return;
     }
+
+    // validate config
+    this.validate();
 
     // setup style
     this._style.textContent =
@@ -160,11 +193,11 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
       col_container.classList.add("summary-column");
 
       // header
-      const header_container = document.createElement("div");
-      header_container.classList.add("summary-header");
-
       const header_data = document.createElement("span");
-      header_data.classList.add("summary-header-text");
+      header_data.classList.add("summary-header");
+
+      const header_divider = document.createElement("span");
+      header_divider.classList.add("summary-header-divider");
 
       // add user provided classes
       if (this._config.plugin_config.header_class) {
@@ -181,14 +214,10 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
 
       // put column name in content
       header_data.textContent = col;
-      header_container.appendChild(header_data);
 
       // data
-      const data_container = document.createElement("div");
-      data_container.classList.add("summary-data");
-
       const data_data = document.createElement("span");
-      data_data.classList.add("summary-data-text");
+      data_data.classList.add("summary-data");
 
       // add user provided classes
       if (this._config.plugin_config.data_class) {
@@ -200,11 +229,19 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
       ) {
         data_data.classList.add(this._config.plugin_config.data_classes[col]);
       }
-      data_container.appendChild(data_data);
 
       // add to container
-      col_container.appendChild(header_container);
-      col_container.appendChild(data_container);
+      if (
+        ["top", "left"].indexOf(this._config.plugin_config.align_header) >= 0
+      ) {
+        col_container.appendChild(header_data);
+        col_container.appendChild(header_divider);
+        col_container.appendChild(data_data);
+      } else {
+        col_container.appendChild(data_data);
+        col_container.appendChild(header_divider);
+        col_container.appendChild(header_data);
+      }
 
       // put in map
       _entries.set(col, col_container);
@@ -219,37 +256,24 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
           aggregations[col] || (Number.isNaN(datum) ? "count" : "sum");
         data_data.title = `${aggregate}("${col}")`;
 
-        // format the data if necessary
-        if (
-          this._config.plugin_config.format &&
-          this._config.plugin_config.format[col]
-        ) {
-          // grab formatter
-          const formatter = this._config.plugin_config.format[col];
+        // grab formatter
+        const formatter = this._config.plugin_config.format[col];
 
-          if (["integer", "float"].indexOf(this._schema[col]) >= 0) {
-            // round to `n` decimals
-            datum = Number(datum).toFixed(+formatter);
-          } else if (["boolean"].indexOf(this._schema[col]) >= 0) {
-            // do nothing
-          } else if (["datetime", "date"].indexOf(this._schema[col]) >= 0) {
-            // format
-            datum = dayjs(+datum).format(formatter);
-          } else {
-            // truncate the string to `n` digits
-            datum = new String(datum).substring(0, +formatter);
-          }
+        // format the data if necessary
+        if (["integer"].indexOf(this._schema[col]) >= 0) {
+          // round to `n` decimals
+          datum = Number(datum).toFixed(+(formatter || 0));
+        } else if (["float"].indexOf(this._schema[col]) >= 0) {
+          datum = Number(datum).toFixed(+(formatter || 2));
+        } else if (["boolean"].indexOf(this._schema[col]) >= 0) {
+          // do nothing
+        } else if (["datetime", "date"].indexOf(this._schema[col]) >= 0) {
+          // format
+          datum = dayjs(+datum).format(formatter);
         } else {
-          // default formats
-          if (["integer", "float"].indexOf(this._schema[col]) >= 0) {
-            // do nothing
-          } else if (["boolean"].indexOf(this._schema[col]) >= 0) {
-            // do nothing
-          } else if (["datetime", "date"].indexOf(this._schema[col]) >= 0) {
-            // format
-            datum = dayjs(+datum).format();
-          } else {
-            // do nothing
+          // truncate the string to `n` digits
+          if (formatter !== undefined) {
+            datum = new String(datum).substring(0, +formatter);
           }
         }
 
@@ -271,7 +295,16 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
       this._container.classList.remove("align-horizontal");
       this._container.classList.remove("align-vertical");
       this._container.classList.add(
-        `align-${this._config.plugin_config.align || _ALIGN_DEFAULT}`
+        `align-${this._config.plugin_config.align}`
+      );
+
+      // set class based on header alignment
+      this._container.classList.remove("align-header-top");
+      this._container.classList.remove("align-header-bottom");
+      this._container.classList.remove("align-header-left");
+      this._container.classList.remove("align-header-right");
+      this._container.classList.add(
+        `align-header-${this._config.plugin_config.align_header}`
       );
     });
 

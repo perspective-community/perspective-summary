@@ -1,7 +1,6 @@
 const {
   NodeModulesExternal,
 } = require("@finos/perspective-esbuild-plugin/external");
-const { UMDLoader } = require("@finos/perspective-esbuild-plugin/umd");
 const { build } = require("@finos/perspective-esbuild-plugin/build");
 const { BuildCss } = require("@prospective.co/procss/target/cjs/procss.js");
 const fs = require("fs");
@@ -20,20 +19,6 @@ const BUILD = [
       ".html": "text",
     },
     outfile: "dist/esm/perspective-viewer-summary.js",
-  },
-  {
-    define: {
-      global: "window",
-    },
-    entryPoints: ["src/js/plugin.js"],
-    globalName: "perspective_summary",
-    plugins: [UMDLoader()],
-    format: "cjs",
-    loader: {
-      ".css": "text",
-      ".html": "text",
-    },
-    outfile: "dist/umd/perspective-viewer-summary.js",
   },
   {
     define: {
@@ -73,6 +58,14 @@ async function compile_css() {
   fs.writeFileSync(
     "dist/css/perspective-viewer-summary-minimal.css",
     builder2.compile().get("minimal.css")
+  );
+
+  const builder3 = new BuildCss("");
+  add(builder3, "./common.less");
+  add(builder3, "./modern.less");
+  fs.writeFileSync(
+    "dist/css/perspective-viewer-summary-modern.css",
+    builder3.compile().get("modern.css")
   );
 }
 

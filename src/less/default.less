@@ -1,8 +1,52 @@
 @import "./common.less";
 
-.summary-header::after {
+.summary-header-divider::after {
   content: "";
+  display: block;
+  margin: auto;
+}
+
+.align-header-top .summary-header-divider::after {
+  border-bottom: 1px solid var(--inactive--color, #6e6e6e);
+}
+
+.align-header-left .summary-header-divider::after {
+  border-right: 1px solid var(--inactive--color, #6e6e6e);
+}
+
+.align-header-right .summary-header-divider::after {
+  border-left: 1px solid var(--inactive--color, #6e6e6e);
+}
+
+.align-header-bottom .summary-header-divider::after {
+  border-top: 1px solid var(--inactive--color, #6e6e6e);
+}
+
+.align-header-top .summary-header-divider,
+.align-header-bottom .summary-header-divider {
+  width: 100%;
+}
+
+.align-horizontal.align-header-top .summary-header-divider::after,
+.align-horizontal.align-header-bottom .summary-header-divider::after {
   height: 1px;
   width: 90%;
-  border-bottom: 1px solid var(--inactive--color, #6e6e6e);
+}
+
+.align-vertical.align-header-top .summary-header-divider::after,
+.align-vertical.align-header-bottom .summary-header-divider::after {
+  height: 1px;
+  width: 50%;
+}
+
+.align-horizontal.align-header-left .summary-header-divider::after,
+.align-horizontal.align-header-right .summary-header-divider::after {
+  height: 90%;
+  width: 1px;
+}
+
+.align-vertical.align-header-left .summary-header-divider::after,
+.align-vertical.align-header-right .summary-header-divider::after {
+  height: 50%;
+  width: 1px;
 }
