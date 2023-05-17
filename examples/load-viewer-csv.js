@@ -1,3 +1,5 @@
+import * as perspective from "../node_modules/@finos/perspective/dist/cdn/perspective.js";
+
 async function load() {
   let resp = await fetch("superstore.csv");
   let csv = await resp.text();
@@ -16,7 +18,19 @@ async function load() {
 await load();
 
 document
-  .querySelectorAll("div.container-col > perspective-viewer")
+  .querySelectorAll("div.container-col > div > perspective-viewer")
   .forEach((viewer) =>
     viewer.restore({ plugin_config: { align: "vertical" } })
+  );
+
+document
+  .querySelectorAll("div.container-header-rotate > div > perspective-viewer")
+  .forEach((viewer, key) =>
+    viewer.restore({
+      plugin_config: {
+        align_header: ["top", "bottom", "top", "bottom", "left", "right"][
+          Number.parseInt(key)
+        ],
+      },
+    })
   );

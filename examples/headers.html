@@ -27,13 +27,13 @@
         top: 0;
         left: 0;
         right: 0;
-        bottom: 50%;
+        bottom: 80%;
       }
       div.container-col {
         display: flex;
         flex-direction: row;
         position: absolute;
-        top: 50%;
+        top: 20%;
         left: 0;
         right: 0;
         bottom: 0;
@@ -64,38 +64,35 @@
     </style>
   </head>
   <body>
-    <div class="container-row">
+    <div class="container-row container-header-rotate">
       <div>
-        <h6>Default</h6>
+        <h6>Top</h6>
         <perspective-viewer class="default"></perspective-viewer>
       </div>
       <div>
-        <h6>Minimal</h6>
+        <h6>Bottom</h6>
         <perspective-viewer
-          class="minimal"
-          plugin_config='{"theme": "minimal"}'
-        ></perspective-viewer>
-      </div>
-      <div>
-        <h6>Modern</h6>
-        <perspective-viewer
-          class="modern"
-          plugin_config='{"theme": "modern"}'
+          class="default"
+          plugin_config='{"align_header": "bottom"}'
         ></perspective-viewer>
       </div>
     </div>
-    <div class="container-col">
+    <div class="container-col container-header-rotate">
       <div>
-        <h6>Default</h6>
+        <h6>Top</h6>
         <perspective-viewer class="default"></perspective-viewer>
       </div>
       <div>
-        <h6>Minimal</h6>
-        <perspective-viewer class="minimal"></perspective-viewer>
+        <h6>Bottom</h6>
+        <perspective-viewer class="default"></perspective-viewer>
       </div>
       <div>
-        <h6>Modern</h6>
-        <perspective-viewer class="modern"></perspective-viewer>
+        <h6>Left</h6>
+        <perspective-viewer class="default"></perspective-viewer>
+      </div>
+      <div>
+        <h6>Right</h6>
+        <perspective-viewer class="default"></perspective-viewer>
       </div>
     </div>
   </body>

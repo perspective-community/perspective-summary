@@ -5,14 +5,10 @@
   "repository": "git@github.com:perspective-community/perspective-summary.git",
   "author": "Tim Paine <t.paine154@gmail.com>",
   "license": "Apache-2.0",
-  "unpkg": "dist/umd/perspective-viewer-summary.js",
-  "main": "dist/umd/perspective-viewer-summary.js",
-  "jsdelivr": "dist/umd/perspective-viewer-summary.js",
+  "unpkg": "dist/cdn/perspective-viewer-summary.js",
+  "jsdelivr": "dist/cdn/perspective-viewer-summary.js",
   "exports": {
-    ".": {
-      "require": "./dist/umd/perspective-viewer-summary.js",
-      "import": "./dist/esm/perspective-viewer-summary.js"
-    },
+    ".": "./dist/esm/perspective-viewer-summary.js",
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
   },
@@ -34,15 +30,15 @@
     "access": "public"
   },
   "dependencies": {
-    "@finos/perspective": "^2.0.1",
-    "@finos/perspective-viewer": "^2.0.1",
+    "@finos/perspective": "^2.1.2",
+    "@finos/perspective-viewer": "^2.1.2",
     "dayjs": "^1.11.7"
   },
   "devDependencies": {
-    "@finos/perspective-esbuild-plugin": "^2.0.1",
+    "@finos/perspective-esbuild-plugin": "^2.1.2",
     "@playwright/test": "^1.33.0",
-    "@prospective.co/procss": "^0.1.12",
-    "esbuild": "^0.17.18",
+    "@prospective.co/procss": "^0.1.13",
+    "esbuild": "^0.17.19",
     "esbuild-plugin-less": "^1.2.0",
     "http-server": "^14.1.1",
     "playwright": "^1.33.0",
