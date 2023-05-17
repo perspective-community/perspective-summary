@@ -62,6 +62,7 @@ async function compile_css() {
 
   const builder3 = new BuildCss("");
   add(builder3, "./common.less");
+  add(builder3, "./default.less");
   add(builder3, "./modern.less");
   fs.writeFileSync(
     "dist/css/perspective-viewer-summary-modern.css",

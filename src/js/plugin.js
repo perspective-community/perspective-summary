@@ -1,17 +1,28 @@
+import GLOBAL_STYLE from "../css/global.css";
 import DEFAULT from "../../dist/css/perspective-viewer-summary.css";
 import MINIMAL from "../../dist/css/perspective-viewer-summary-minimal.css";
 import MODERN from "../../dist/css/perspective-viewer-summary-modern.css";
 import dayjs from "dayjs";
 
 const _ALIGN_OPTIONS = ["horizontal", "vertical"];
-const _ALIGN_DEFAULT = _ALIGN_OPTIONS[0];
+const _ALIGN_DEFAULT = "horizontal";
 const _ALIGN_HEADER_OPTIONS = {
   horizontal: ["top", "bottom"],
   vertical: ["top", "bottom", "left", "right"],
 };
 const _ALIGN_HEADER_DEFAULTS = {
-  horizontal: _ALIGN_HEADER_OPTIONS.horizontal[0],
-  vertical: _ALIGN_HEADER_OPTIONS.vertical[0],
+  default: {
+    horizontal: "top",
+    vertical: "top",
+  },
+  minimal: {
+    horizontal: "top",
+    vertical: "top",
+  },
+  modern: {
+    horizontal: "bottom",
+    vertical: "right",
+  },
 };
 
 const THEMES = {
@@ -26,14 +37,17 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
     /*
      * Config:
      *  align: str = "vertical" | "horizontal",  // align items vertically or horizontally, default is horizontal
+     *  align_header: str = "top" | "bottom" | "left" | "right"
      *  format: {[col: str]: int|str }, // round numbers, truncate strings, format dates
      *  header_class: str, // css class to add to all headers
      *  data_class: str, // css class to add to all datas
      *  header_classes: {[col: str]: str}, // css class to add to specific headers
      *  data_classes: {[col: str]: str}, //  css class to add to specific datas
+     *  theme: str = "default" | "minimal" | "modern"
      */
     this._config = {
       plugin_config: {
+        theme: "default",
         align: _ALIGN_DEFAULT,
         align_header: undefined,
         format: {},
@@ -41,7 +55,6 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
         data_class: "",
         header_classes: {},
         data_classes: {},
-        theme: "default",
       },
     };
 
@@ -64,6 +77,10 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
 
       this._shadow.appendChild(this._style);
       this._shadow.appendChild(this._container);
+
+      this._global_style = document.createElement("style");
+      this._global_style.textContent = GLOBAL_STYLE;
+      document.head.appendChild(this._global_style);
     }
     this._loaded = true;
   }
@@ -99,11 +116,13 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
   async render(view) {
     // pull config
     const config = await view.get_config();
+
     this._config = {
       ...this._config,
       ...config,
-      plugin_config: { ...this._config.plugin_config, ...config.plugin_config },
+      plugin_config: this._config.plugin_config,
     };
+
     this._schema = await view.schema();
 
     // get the columns being displayed
@@ -122,7 +141,7 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
     this._data = await view.to_columns(data_window);
 
     // set class based on alignment
-    this.format();
+    this.format(config.plugin_config);
   }
 
   async resize() {
@@ -134,41 +153,90 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
   }
 
   save() {
-    return { ...this._config };
+    return { ...this._config.plugin_config };
   }
 
   restore(token) {
-    this._config = {
-      ...this._config,
-      plugin_config: { ...this._config.plugin_config, ...token },
-    };
-    this.format();
+    this.format(token);
   }
 
-  validate() {
+  validate(restore) {
+    restore = restore || this._config.plugin_config;
+
+    // save if theme is changing
+    const theme_change =
+      restore.theme !== undefined &&
+      restore.theme !== this._config.plugin_config.theme;
+
+    console.log(theme_change, JSON.stringify(restore));
+
+    // set theme
+    this._config.plugin_config.theme =
+      restore.theme || this._config.plugin_config.theme;
+
+    // ensure theme is valid
+    if (Object.keys(THEMES).indexOf(this._config.plugin_config.theme) < 0) {
+      this._config.plugin_config.theme = "default";
+    }
+
+    // set alignment
+    this._config.plugin_config.align =
+      restore.align || this._config.plugin_config.align;
+
+    // set alignment to default if invalid
     if (_ALIGN_OPTIONS.indexOf(this._config.plugin_config.align) < 0) {
       this._config.plugin_config.align = _ALIGN_DEFAULT;
     }
 
+    // set header alignment
+    this._config.plugin_config.align_header =
+      restore.align_header || this._config.plugin_config.align_header;
+
+    // set header alignment to default if invalid
     if (
       _ALIGN_HEADER_OPTIONS[this._config.plugin_config.align].indexOf(
         this._config.plugin_config.align_header
       ) < 0
     ) {
       this._config.plugin_config.align_header =
-        _ALIGN_HEADER_DEFAULTS[this._config.plugin_config.align];
+        _ALIGN_HEADER_DEFAULTS[this._config.plugin_config.theme][
+          this._config.plugin_config.align
+        ];
     }
 
-    this._config.plugin_config.format = this._config.plugin_config.format || {};
+    // set default header alignment if not set
+    if (
+      this._config.plugin_config.align_header === undefined ||
+      (theme_change && restore.align_header === undefined)
+    ) {
+      this._config.plugin_config.align_header =
+        _ALIGN_HEADER_DEFAULTS[this._config.plugin_config.theme][
+          this._config.plugin_config.align
+        ];
+    }
+
+    // handle other restores
+    this._config.plugin_config.header_class =
+      restore.header_class || this._config.plugin_config.header_class;
+    this._config.plugin_config.data_class =
+      restore.data_class || this._config.plugin_config.data_class;
+    this._config.plugin_config.header_classes =
+      restore.header_classes || this._config.plugin_config.header_classes;
+    this._config.plugin_config.data_classes =
+      restore.data_classes || this._config.plugin_config.data_classes;
+
+    // ensure format is present
+    this._config.plugin_config.format =
+      restore.format || this._config.plugin_config.format || {};
   }
 
-  format() {
+  format(restore) {
     if (!this._loaded) {
       return;
     }
 
     // validate config
-    this.validate();
+    this.validate(restore);
 
     // setup style
     this._style.textContent =
@@ -262,14 +330,35 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
         // format the data if necessary
         if (["integer"].indexOf(this._schema[col]) >= 0) {
           // round to `n` decimals
-          datum = Number(datum).toFixed(+(formatter || 0));
+          if (this._config.plugin_config.theme === "modern") {
+            // negatives not supported everywhere
+            datum = `${+datum < 0 ? "-" : ""}${new Intl.NumberFormat("en-US", {
+              maximumFractionDigits: +(formatter || 0),
+              notation: "compact",
+              compactDisplay: "short",
+            }).format(Math.abs(+datum))}`;
+          } else {
+            datum = Number(datum).toFixed(+(formatter || 0));
+          }
         } else if (["float"].indexOf(this._schema[col]) >= 0) {
-          datum = Number(datum).toFixed(+(formatter || 2));
+          if (this._config.plugin_config.theme === "modern") {
+            datum = new Intl.NumberFormat("en-US", {
+              maximumFractionDigits: +(formatter || 1),
+              notation: "compact",
+              compactDisplay: "short",
+            }).format(Number(datum));
+          } else {
+            datum = Number(datum).toFixed(+(formatter || 1));
+          }
         } else if (["boolean"].indexOf(this._schema[col]) >= 0) {
           // do nothing
         } else if (["datetime", "date"].indexOf(this._schema[col]) >= 0) {
           // format
-          datum = dayjs(+datum).format(formatter);
+          if (this._config.plugin_config.theme === "modern") {
+            datum = dayjs(+datum).format(formatter || "MMM D");
+          } else {
+            datum = dayjs(+datum).format(formatter);
+          }
         } else {
           // truncate the string to `n` digits
           if (formatter !== undefined) {
