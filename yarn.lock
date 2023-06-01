@@ -131,11 +131,11 @@
     regular-table "=0.5.6"
 
 "@finos/perspective-viewer@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.1.2.tgz#6227b19feb09d90722fb63b11320bd7a2db0c947"
-  integrity sha512-l0zzYA+k1b0KYKRdoVghtf3yg2j/atPsfEJyEHSmNx4YHKCUXdNRS1RyYQvcJk7TCKC8LQCAxA/hJpbWeBRK3Q==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.2.0.tgz#32c2decad7057f532c20eb9195b01e5dfab45609"
+  integrity sha512-LbmkY4738VYxVB9f27HIqZk+22WKApa6rx8s391xaxZu8z/OcOD69nZlCAFLSEyNBAos+WNg5KM67SXQv37wQw==
   dependencies:
-    "@finos/perspective" "^2.1.2"
+    "@finos/perspective" "^2.2.0"
     fflate "^0.7.4"
 
 "@finos/perspective-workspace@^2.1.2":
@@ -152,10 +152,10 @@
     "@lumino/widgets" "^1.37.0"
     lodash "^4.17.4"
 
-"@finos/perspective@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.1.2.tgz#3f3998e86bd299089719c35ab229789c1bdb181f"
-  integrity sha512-zr3SacA00J96nNFsawJaBwImq4M83cwAcpIgv2KKITxy/aP2hwG8P/rFZpdIkpt1llC5U8HJ3Una/nh+xiB3ig==
+"@finos/perspective@^2.1.2", "@finos/perspective@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.2.0.tgz#5f99b009004c93e69bb58e27540ebbdb7a2a071a"
+  integrity sha512-OPSFrwnaUyDnAL4jQb4kICMDBO6tqZ1vGGgd9xgTssB0VToIXObPMzlNAFtuWDL7qwiyxupqMYkjXMhoRGY7pA==
   dependencies:
     fflate "^0.7.4"
     ws "^6.1.2"
