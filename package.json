@@ -30,20 +30,18 @@
     "access": "public"
   },
   "dependencies": {
-    "@finos/perspective": "^2.1.2",
+    "@finos/perspective": "^2.2.0",
     "@finos/perspective-viewer": "^2.1.2",
-    "dayjs": "^1.11.7"
+    "dayjs": "^1.11.8"
   },
   "devDependencies": {
     "@finos/perspective-esbuild-plugin": "^2.1.2",
-    "@finos/perspective-viewer-datagrid": "^2.1.2",
     "@finos/perspective-workspace": "^2.1.2",
     "@playwright/test": "^1.33.0",
     "@prospective.co/procss": "^0.1.13",
     "esbuild": "^0.17.19",
     "esbuild-plugin-less": "^1.2.0",
     "http-server": "^14.1.1",
-    "playwright": "^1.33.0",
     "prettier": "^2.8.8"
   }
 }

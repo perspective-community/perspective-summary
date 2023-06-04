@@ -120,16 +120,6 @@
     node-fetch "^2.6.7"
     tar "^6.1.11"
 
-"@finos/perspective-viewer-datagrid@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@finos/perspective-viewer-datagrid/-/perspective-viewer-datagrid-2.1.2.tgz#a692f0afc82e5605984d1193fb6fc30d4b70a2e5"
-  integrity sha512-UrGerYg0GUfiU0glrWkx39Jps4u8cRRCrFV05jHBWvmGg3JAAvcZYfSdE4Gcfe3TbniEJMtOBR8W5cL4dbZIYQ==
-  dependencies:
-    "@finos/perspective" "^2.1.2"
-    "@finos/perspective-viewer" "^2.1.2"
-    chroma-js "^1.3.4"
-    regular-table "=0.5.6"
-
 "@finos/perspective-viewer@^2.1.2", "@finos/perspective-viewer@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.2.0.tgz#32c2decad7057f532c20eb9195b01e5dfab45609"
@@ -151,14 +141,6 @@
     "@lumino/virtualdom" "^1.14.1"
     "@lumino/widgets" "^1.37.0"
     lodash "^4.17.4"
-
-"@finos/perspective@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.1.2.tgz#3f3998e86bd299089719c35ab229789c1bdb181f"
-  integrity sha512-zr3SacA00J96nNFsawJaBwImq4M83cwAcpIgv2KKITxy/aP2hwG8P/rFZpdIkpt1llC5U8HJ3Una/nh+xiB3ig==
-  dependencies:
-    fflate "^0.7.4"
-    ws "^6.1.2"
 
 "@finos/perspective@^2.2.0":
   version "2.2.0"
@@ -341,11 +323,6 @@ chownr@^2.0.0:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
-chroma-js@^1.3.4:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/chroma-js/-/chroma-js-1.4.1.tgz#eb2d9c4d1ff24616be84b35119f4d26f8205f134"
-  integrity sha512-jTwQiT859RTFN/vIf7s+Vl/Z2LcMrvMv3WUFmd/4u76AdlFC0NTNgqEEFPcRiHmAswPsMiQEDZLM8vX8qXpZNQ==
-
 color-convert@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-2.0.1.tgz#72d3a68d598c9bdb3af2ad1e84f21d896abd4de3"
@@ -370,10 +347,10 @@ corser@^2.0.1:
   resolved "https://registry.yarnpkg.com/corser/-/corser-2.0.1.tgz#8eda252ecaab5840dcd975ceb90d9370c819ff87"
   integrity sha512-utCYNzRSQIZNPIcGZdQc92UVJYAhtGAteCFg0yRaFm8f0P+CPtyGyHXJcGXnffjCybUCEx3FQ2G7U3/o9eIkVQ==
 
-dayjs@^1.11.7:
-  version "1.11.7"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.7.tgz#4b296922642f70999544d1144a2c25730fce63e2"
-  integrity sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==
+dayjs@^1.11.8:
+  version "1.11.8"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.8.tgz#4282f139c8c19dd6d0c7bd571e30c2d0ba7698ea"
+  integrity sha512-LcgxzFoWMEPO7ggRv1Y2N31hUf2R0Vj7fuy/m+Bg1K8rr+KAs1AEy4y9jd5DXe8pbHgX+srkHNS7TH6Q6ZhYeQ==
 
 debug@^3.2.6, debug@^3.2.7:
   version "3.2.7"
@@ -658,22 +635,10 @@ pify@^4.0.1:
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
-playwright-core@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.33.0.tgz#269efe29a927cd6d144d05f3c2d2f72bd72447a1"
-  integrity sha512-aizyPE1Cj62vAECdph1iaMILpT0WUDCq3E6rW6I+dleSbBoGbktvJtzS6VHkZ4DKNEOG9qJpiom/ZxO+S15LAw==
-
 playwright-core@1.34.3:
   version "1.34.3"
   resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.34.3.tgz#bc906ea1b26bb66116ce329436ee59ba2e78fe9f"
   integrity sha512-2pWd6G7OHKemc5x1r1rp8aQcpvDh7goMBZlJv6Co5vCNLVcQJdhxRL09SGaY6HcyHH9aT4tiynZabMofVasBYw==
-
-playwright@^1.33.0:
-  version "1.34.3"
-  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.34.3.tgz#6dca584e52e3ebc3392435c8dadf4953c792f016"
-  integrity sha512-UOOVE4ZbGfGkP1KVqWTdXOmm8Pw2pBhfbmlqKMkpiRCQjL5W+J+xRQXpgutFr0iM4pWl8g0GyyASMsqjQfFohw==
-  dependencies:
-    playwright-core "1.34.3"
 
 portfinder@^1.0.28:
   version "1.0.32"
@@ -700,11 +665,6 @@ qs@^6.4.0:
   integrity sha512-0wsrzgTz/kAVIeuxSjnpGC56rzYtr6JT/2BwEvMaPhFIoYa1aGO8LbzuU1R0uUYQkLpWBTOj0l/CLAJB64J6nQ==
   dependencies:
     side-channel "^1.0.4"
-
-regular-table@=0.5.6:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/regular-table/-/regular-table-0.5.6.tgz#9b14ab61590ff41c709986ef7ca66ade427bde4b"
-  integrity sha512-lScNtcqjNcPaFYSeDRNsC+t2P/IzYCLKJNls1hBQAyTtWatX94zO87n2ExEPCnbbkKHGYEZ8Uo8Dgvcw34yTQA==
 
 requires-port@^1.0.0:
   version "1.0.0"
