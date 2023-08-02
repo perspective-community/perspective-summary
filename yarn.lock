@@ -120,20 +120,20 @@
     node-fetch "^2.6.7"
     tar "^6.1.11"
 
-"@finos/perspective-viewer@^2.1.2", "@finos/perspective-viewer@^2.2.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.3.0.tgz#4397d2b43a5e2ce6a306b800c453a134b851f049"
-  integrity sha512-uj8aKPCDhNTMv15CJM08JSpPSaXeJ1n6n2MaFlEy3ChkRiKyPjatHkbJ0Y4QrfKTsdfM1xH80CjCrDuN03BsNg==
+"@finos/perspective-viewer@^2.1.2", "@finos/perspective-viewer@^2.3.2":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.3.2.tgz#f94c6939dab30c037bf583087faa89bc435de6c4"
+  integrity sha512-CPV1ogYgmMzIeM5bvgoUxSGo19J6RuqtwVYnM7V7CQ5Vm5O2mzH2yPZ4TFLcQZIU4w0WIgv8hfM6k2kXheclnw==
   dependencies:
-    "@finos/perspective" "^2.3.0"
+    "@finos/perspective" "^2.3.2"
     fflate "^0.7.4"
 
 "@finos/perspective-workspace@^2.1.2":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@finos/perspective-workspace/-/perspective-workspace-2.2.0.tgz#eef8fd57a5f065d22455b24419156c4febc8402c"
-  integrity sha512-Yotmch6BxGwyuMrvq9Y27mM1m/TuPWEEUFgqlJiTsw82AmnfTu0lusSzv6YRn+FutW8Zb1ResWlYgc+Hi2gCeQ==
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@finos/perspective-workspace/-/perspective-workspace-2.3.2.tgz#7889fdbec1052c7ce218915252638426d859c230"
+  integrity sha512-aUbH9yBG1ia66pAJ4ey4ZjGLKn64vyhKHXI3JcRO9KhFUNx5X20TR69zoOwqv47qURit7XoSMwaMNUxWdG6o8A==
   dependencies:
-    "@finos/perspective-viewer" "^2.2.0"
+    "@finos/perspective-viewer" "^2.3.2"
     "@lumino/algorithm" "^1.9.1"
     "@lumino/commands" "^1.20.0"
     "@lumino/domutils" "^1.8.1"
@@ -142,10 +142,18 @@
     "@lumino/widgets" "^1.37.0"
     lodash "^4.17.4"
 
-"@finos/perspective@^2.2.0", "@finos/perspective@^2.3.0":
+"@finos/perspective@^2.2.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.3.0.tgz#485f11a712f5faa65264ab2f5debfe6e66e0cd7e"
   integrity sha512-SnsdYdYHXKarG/mFIUcZmUiTKo9yccnbd+r0a9BRUcY3p9VuDPdp8fnPanoXLKi1xUkIz7RJSSTVpbPL1T+jWg==
+  dependencies:
+    fflate "^0.7.4"
+    ws "^6.1.2"
+
+"@finos/perspective@^2.3.2":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.3.2.tgz#bd9c81e3dd3a32c8f118fd37d327befb78115e8f"
+  integrity sha512-L8F9VeamUB1I5moifJQ/j8v6UqXs37eV+AuOwZDEebveX7+1fvF/pZA9D+e2+NgUhnlGXmW6GcPzgqXyRUnvcQ==
   dependencies:
     fflate "^0.7.4"
     ws "^6.1.2"
