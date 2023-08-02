@@ -142,15 +142,7 @@
     "@lumino/widgets" "^1.37.0"
     lodash "^4.17.4"
 
-"@finos/perspective@^2.2.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.3.0.tgz#485f11a712f5faa65264ab2f5debfe6e66e0cd7e"
-  integrity sha512-SnsdYdYHXKarG/mFIUcZmUiTKo9yccnbd+r0a9BRUcY3p9VuDPdp8fnPanoXLKi1xUkIz7RJSSTVpbPL1T+jWg==
-  dependencies:
-    fflate "^0.7.4"
-    ws "^6.1.2"
-
-"@finos/perspective@^2.3.2":
+"@finos/perspective@^2.2.0", "@finos/perspective@^2.3.2":
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.3.2.tgz#bd9c81e3dd3a32c8f118fd37d327befb78115e8f"
   integrity sha512-L8F9VeamUB1I5moifJQ/j8v6UqXs37eV+AuOwZDEebveX7+1fvF/pZA9D+e2+NgUhnlGXmW6GcPzgqXyRUnvcQ==
