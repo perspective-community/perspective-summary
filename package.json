@@ -35,13 +35,13 @@
     "dayjs": "^1.11.8"
   },
   "devDependencies": {
-    "@finos/perspective-esbuild-plugin": "^2.1.2",
+    "@finos/perspective-esbuild-plugin": "^2.3.2",
     "@finos/perspective-workspace": "^2.1.2",
-    "@playwright/test": "^1.33.0",
+    "@playwright/test": "^1.36.2",
     "@prospective.co/procss": "^0.1.13",
-    "esbuild": "^0.18.17",
-    "esbuild-plugin-less": "^1.2.0",
+    "esbuild": "^0.19.0",
+    "esbuild-plugin-less": "^1.2.3",
     "http-server": "^14.1.1",
-    "prettier": "^2.8.8"
+    "prettier": "^3.0.1"
   }
 }

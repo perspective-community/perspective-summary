@@ -23,7 +23,7 @@ document
           align: "horizontal",
           theme: viewer.className.length > 0 ? viewer.className : "default",
         },
-      })
+      }),
   );
 
 document
@@ -36,7 +36,7 @@ document
           align: "vertical",
           theme: viewer.className.length > 0 ? viewer.className : "default",
         },
-      })
+      }),
   );
 
 document
@@ -49,5 +49,5 @@ document
             Number.parseInt(key) % 4
           ],
         },
-      })
+      }),
   );
