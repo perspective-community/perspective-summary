@@ -4,16 +4,16 @@ declare global {
   interface CustomElementRegistry {
     get(
       tagName: "perspective-viewer-summary",
-    ): HTMLPerspectiveViewerExamplePluginElement;
+    ): PerspectiveViewerSummaryPluginElement;
 
     // TODO is this needed?
     whenDefined(tagName: "perspective-viewer-summary"): Promise<void>;
   }
 }
 
-interface HTMLPerspectiveViewerSummaryPluginElement
+interface PerspectiveViewerSummaryPluginElement
   extends IPerspectiveViewerPlugin {}
 
-export declare class HTMLPerspectiveViewerSummaryPluginElement
+export declare class PerspectiveViewerSummaryPluginElement
   extends HTMLElement
   implements IPerspectiveViewerPlugin {}
