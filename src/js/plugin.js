@@ -269,7 +269,7 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
         this._config.plugin_config.header_classes[col]
       ) {
         header_data.classList.add(
-          this._config.plugin_config.header_classes[col]
+          this._config.plugin_config.header_classes[col],
         );
       }
 
@@ -377,7 +377,7 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
       this._container.classList.remove("align-horizontal");
       this._container.classList.remove("align-vertical");
       this._container.classList.add(
-        `align-${this._config.plugin_config.align}`
+        `align-${this._config.plugin_config.align}`,
       );
 
       // set class based on header alignment
@@ -386,7 +386,7 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
       this._container.classList.remove("align-header-left");
       this._container.classList.remove("align-header-right");
       this._container.classList.add(
-        `align-header-${this._config.plugin_config.align_header}`
+        `align-header-${this._config.plugin_config.align_header}`,
       );
     });
 
@@ -412,7 +412,7 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
 
 customElements.define(
   "perspective-viewer-summary",
-  PerspectiveViewerSummaryPluginElement
+  PerspectiveViewerSummaryPluginElement,
 );
 
 function _register_global_styles() {

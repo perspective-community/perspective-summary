@@ -3,7 +3,7 @@ import type { IPerspectiveViewerPlugin } from "@finos/perspective-viewer";
 declare global {
   interface CustomElementRegistry {
     get(
-      tagName: "perspective-viewer-summary"
+      tagName: "perspective-viewer-summary",
     ): HTMLPerspectiveViewerExamplePluginElement;
 
     // TODO is this needed?

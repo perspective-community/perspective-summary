@@ -38,7 +38,7 @@ const BUILD = [
 function add(builder, path) {
   builder.add(
     path,
-    fs.readFileSync(path_mod.join("./src/less", path)).toString()
+    fs.readFileSync(path_mod.join("./src/less", path)).toString(),
   );
 }
 
@@ -49,7 +49,7 @@ async function compile_css() {
   add(builder1, "./common.less");
   fs.writeFileSync(
     "dist/css/perspective-viewer-summary.css",
-    builder1.compile().get("default.css")
+    builder1.compile().get("default.css"),
   );
 
   const builder2 = new BuildCss("");
@@ -57,7 +57,7 @@ async function compile_css() {
   add(builder2, "./minimal.less");
   fs.writeFileSync(
     "dist/css/perspective-viewer-summary-minimal.css",
-    builder2.compile().get("minimal.css")
+    builder2.compile().get("minimal.css"),
   );
 
   const builder3 = new BuildCss("");
@@ -66,7 +66,7 @@ async function compile_css() {
   add(builder3, "./modern.less");
   fs.writeFileSync(
     "dist/css/perspective-viewer-summary-modern.css",
-    builder3.compile().get("modern.css")
+    builder3.compile().get("modern.css"),
   );
 }
 
