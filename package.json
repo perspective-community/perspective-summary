@@ -23,9 +23,9 @@
     "lint": "prettier --check \"examples/*.js\" \"examples/*.html\" \"src/js/*.js\" \"src/less/*.less\" \"tests/*.spec.js\" \"*.js\" \"*.json\" \"index.d.ts\" \"*.md\"",
     "fix": "prettier --write  \"examples/*.js\" \"examples/*.html\" \"src/js/*.js\" \"src/less/*.less\" \"tests/*.spec.js\" \"*.js\" \"*.json\" \"index.d.ts\" \"*.md\"",
     "prepack": "npm run build",
-    "test": "TZ=UTC playwright test",
     "start:tests": "http-server -p 3000 ",
-    "start:examples": "http-server -p 3000 -o examples/"
+    "start:examples": "http-server -p 3000 -o examples/",
+    "test": "TZ=UTC playwright test"
   },
   "publishConfig": {
     "access": "public"
