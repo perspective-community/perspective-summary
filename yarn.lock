@@ -121,11 +121,11 @@
     tar "^6.1.11"
 
 "@finos/perspective-viewer@^2.1.2", "@finos/perspective-viewer@^2.3.2":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.5.1.tgz#3f74b1597923dd20bd4f1e04cc035be193af3b6d"
-  integrity sha512-j2ujok6z/B3dlWY7bP/vlyvVSqF5YnYUD8w2+to6rHfdSQBNvaApW2rZTfw9EepyBI9eDeKOq4l4mJj7A02bsA==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.6.1.tgz#34dffbcca32675ce893c5492a754048e69edc15d"
+  integrity sha512-uHp64TZ0afxbzN3RLft8u713fHPnix50LY7XOvqq36/EMGFlj60D9FBgci42EK4wtZCPC2fxRB2Ken2kjquFgg==
   dependencies:
-    "@finos/perspective" "^2.5.1"
+    "@finos/perspective" "^2.6.1"
     fflate "^0.7.4"
 
 "@finos/perspective-workspace@^2.1.2":
@@ -142,12 +142,13 @@
     "@lumino/widgets" "^1.37.0"
     lodash "^4.17.4"
 
-"@finos/perspective@^2.2.0", "@finos/perspective@^2.5.1":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.5.1.tgz#ebb6200434a6aeb76c9db2c97fc2b213634f497b"
-  integrity sha512-L2pdHIq7xmdL6mSP92yolRhHWYyLsb4KUUxD/iAilkcb4M4jBBpzSyOIO+fbr/RfjaTSUPxAoG3uZShLFT9ymA==
+"@finos/perspective@^2.2.0", "@finos/perspective@^2.6.1":
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.6.1.tgz#03dc1303755aed750b5a2d1d7c5a25431d581447"
+  integrity sha512-YEVW+tCIZO74QxzQufWi9CvEPWDw7dqoLIqQ6wJpUMn4DUATpsC9WC026Z2xN+Draegu50tbQOhHCjFPQmcuvg==
   dependencies:
     fflate "^0.7.4"
+    stoppable "1.1.0"
     ws "^6.1.2"
 
 "@lumino/algorithm@^1.9.1", "@lumino/algorithm@^1.9.2":
@@ -710,6 +711,11 @@ source-map@~0.6.0:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
+
+stoppable@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/stoppable/-/stoppable-1.1.0.tgz#32da568e83ea488b08e4d7ea2c3bcc9d75015d5b"
+  integrity sha512-KXDYZ9dszj6bzvnEMRYvxgeTHU74QBFL54XKtP3nyMuJ81CFYtABZ3bAzL2EdFUaEwJOBOgENyFj3R7oTzDyyw==
 
 supports-color@^7.1.0:
   version "7.2.0"
