@@ -113,9 +113,9 @@
   integrity sha512-HP0GDNla1T3ZL8Ko/SHAS2GgtjOg+VmWnnYLhuTksr++EnduYB0f3Y2LzHsUwb2iQ13JGoY6G3R8h6Du/WG6uA==
 
 "@finos/perspective-esbuild-plugin@^2.3.2":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@finos/perspective-esbuild-plugin/-/perspective-esbuild-plugin-2.5.1.tgz#e3beda6148d08bfe05c92a8b7da0cd42cdd66a16"
-  integrity sha512-tVusGu83YkaiVprDsNYbZn3MS2Z17PV5xVjr6nnVYbk9VmbeLi13w7ZKLtaVQGUjwqMzDG84Li3x54HxtO4a/Q==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@finos/perspective-esbuild-plugin/-/perspective-esbuild-plugin-2.6.1.tgz#ec6ed2be99a54ab6c10c16cb59f329f6edef7c06"
+  integrity sha512-sIQZGglq3+zO+r+yQN25eAQ9xj+0NkxShaEOiF+377JgsqwT6SOX4HCL1yt00cncoA0X1G7k+U3S9OB9JeaieQ==
   dependencies:
     node-fetch "^2.6.7"
     tar "^6.1.11"
