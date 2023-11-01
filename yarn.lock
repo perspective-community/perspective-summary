@@ -120,7 +120,7 @@
     node-fetch "^2.6.7"
     tar "^6.1.11"
 
-"@finos/perspective-viewer@^2.1.2", "@finos/perspective-viewer@^2.3.2":
+"@finos/perspective-viewer@^2.1.2", "@finos/perspective-viewer@^2.6.1":
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.6.1.tgz#34dffbcca32675ce893c5492a754048e69edc15d"
   integrity sha512-uHp64TZ0afxbzN3RLft8u713fHPnix50LY7XOvqq36/EMGFlj60D9FBgci42EK4wtZCPC2fxRB2Ken2kjquFgg==
@@ -129,11 +129,11 @@
     fflate "^0.7.4"
 
 "@finos/perspective-workspace@^2.1.2":
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/@finos/perspective-workspace/-/perspective-workspace-2.3.2.tgz#7889fdbec1052c7ce218915252638426d859c230"
-  integrity sha512-aUbH9yBG1ia66pAJ4ey4ZjGLKn64vyhKHXI3JcRO9KhFUNx5X20TR69zoOwqv47qURit7XoSMwaMNUxWdG6o8A==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@finos/perspective-workspace/-/perspective-workspace-2.6.1.tgz#f549c8f00c03a7fb3bc1b46e6f184923eca64e4a"
+  integrity sha512-ZRrI4WaOgtxR9cUgOD+0FqQAN+Tqc3j0nUPyLAjhzbW8+FwnlFSLi05x1/4eyjM418nPU9cw7zeWw4YVNae4jw==
   dependencies:
-    "@finos/perspective-viewer" "^2.3.2"
+    "@finos/perspective-viewer" "^2.6.1"
     "@lumino/algorithm" "^1.9.1"
     "@lumino/commands" "^1.20.0"
     "@lumino/domutils" "^1.8.1"
