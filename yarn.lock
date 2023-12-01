@@ -143,11 +143,10 @@
     lodash "^4.17.4"
 
 "@finos/perspective@^2.2.0", "@finos/perspective@^2.6.1":
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.6.1.tgz#03dc1303755aed750b5a2d1d7c5a25431d581447"
-  integrity sha512-YEVW+tCIZO74QxzQufWi9CvEPWDw7dqoLIqQ6wJpUMn4DUATpsC9WC026Z2xN+Draegu50tbQOhHCjFPQmcuvg==
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.7.1.tgz#9d9726c1307469a7578539899c04d245e2285e86"
+  integrity sha512-KJAzWCiYsshyNn2O9dr6sfRMh/1vdX2wuyech/3ID/mmiBSCTNM/Crxz2utP1ovIXRuU0R4MNRs1AAkUwmAAnQ==
   dependencies:
-    fflate "^0.7.4"
     stoppable "1.1.0"
     ws "^6.1.2"
 
