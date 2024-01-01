@@ -258,9 +258,9 @@
     playwright "1.40.1"
 
 "@prospective.co/procss@^0.1.13":
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/@prospective.co/procss/-/procss-0.1.13.tgz#67d02488552745af51c72e7b18fa42bda5c2e93c"
-  integrity sha512-cgkhvnge5WM5Ih6f+a/TivPhvs3I2HZYnBlK9zZxrG+QasTSYTSFZ6T+xcBgwjeZeviRb1HV3sW1CCLjlXBOwA==
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/@prospective.co/procss/-/procss-0.1.15.tgz#d6c7eb7adf9c567713555c6d626be2a9f76f8a83"
+  integrity sha512-wTjE7IqzU+WmR0Qkyn9i/Mgr0EFHEzmOY8xifXrTIVdeEp8W9XikKE/y+ozWVPgEBM+A+WpF90/8G4u03yfsyQ==
 
 "@types/less@^3.0.4":
   version "3.0.4"
