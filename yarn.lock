@@ -126,11 +126,11 @@
     tar "^6.1.11"
 
 "@finos/perspective-viewer@^2.1.2", "@finos/perspective-viewer@^2.7.1":
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.8.1.tgz#c646e43a05045c4f5034b793f39082cb1c249a8a"
-  integrity sha512-ubdfbQ+lhV2kK61nn2igfTqPnnDFxU3UGuM5UlM65OrJ0VBB/6FcGB7kJ+/Sk2mse9rGrRLcQs8ULm2jik68SA==
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.10.0.tgz#aa6db62cb04e59f278bad10eb4f939b47a68c0eb"
+  integrity sha512-AWPduQl3/6kHWyDmBSZU7+IKvYnGz5GdMTc0gtW8jLB1p3tZcoiznyaK7BtfPEMDhOE0BNZP0hXuzN0bCtKXrg==
   dependencies:
-    "@finos/perspective" "^2.8.1"
+    "@finos/perspective" "^2.10.0"
 
 "@finos/perspective-workspace@^2.1.2":
   version "2.7.1"
@@ -146,10 +146,10 @@
     "@lumino/widgets" "^1.37.0"
     lodash "^4.17.4"
 
-"@finos/perspective@^2.2.0", "@finos/perspective@^2.8.1":
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.8.1.tgz#352c5fe5162e7723bb754300096cc6ee616267eb"
-  integrity sha512-rFmZGtubYOFV3tHKcg9J52rlXPxFJ8OLH7WAuibvQk0xkR1D71HXyoLKuS6YjSVhR60N7MaUOXLzCYd38h9NBA==
+"@finos/perspective@^2.10.0", "@finos/perspective@^2.2.0":
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.10.0.tgz#fe0e1b46b29e9861abcd3c2ef41b340a86dca915"
+  integrity sha512-8g6hsKhpS2gR7GYQWksNDm8kpymHZiSbJkC4HAp1dI95RArksr4U9CUAOnALgw8JI9B5CYI6b1SWQxbzCsTQ6A==
   dependencies:
     stoppable "1.1.0"
     ws "^6.1.2"
