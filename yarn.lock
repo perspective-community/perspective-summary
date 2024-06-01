@@ -125,7 +125,7 @@
     node-fetch "^2.6.7"
     tar "^6.1.11"
 
-"@finos/perspective-viewer@^2.1.2", "@finos/perspective-viewer@^2.10.0":
+"@finos/perspective-viewer@^2.1.2", "@finos/perspective-viewer@^2.10.1":
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.10.1.tgz#e868ce45269852bc3e30639e8f4ab6c7735d4e9f"
   integrity sha512-G/P+EQXRTYurWpTjTU+VXKM3WHbbTjjpxEfLQLA9BS8gO0NwK1nXT7I5a9PEhVtRnVHEJrpNa2+VbIWTeG15dQ==
@@ -133,18 +133,18 @@
     "@finos/perspective" "^2.10.1"
 
 "@finos/perspective-workspace@^2.1.2":
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/@finos/perspective-workspace/-/perspective-workspace-2.10.0.tgz#57c471f9cc65e89d8551afec38d6efda11148cf1"
-  integrity sha512-XDveB874VULC8TVjiTcLdGFku5Z6HdnSQ9SCKqCdCykKKbLsaX3JzML1sLiqVeuSu/OowWCzDIOFkzQ57yjaiw==
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/@finos/perspective-workspace/-/perspective-workspace-2.10.1.tgz#e8a2cc2587e3106f05511bf7b1a3a3b0c491001a"
+  integrity sha512-3l0aHSPUBE5L3VW6gVzkysC5D56z73wRihEY3hU+EeVyM6KPIOTgtGItLMVcLxZ6UUv58kxdjjjawZHX4AafYQ==
   dependencies:
-    "@finos/perspective-viewer" "^2.10.0"
+    "@finos/perspective-viewer" "^2.10.1"
     "@lumino/algorithm" "^1.9.1"
     "@lumino/commands" "^1.20.0"
     "@lumino/domutils" "^1.8.1"
     "@lumino/messaging" "^1.10.1"
     "@lumino/virtualdom" "^1.14.1"
     "@lumino/widgets" "^1.37.0"
-    lodash "^4.17.4"
+    lodash "^4.17.21"
 
 "@finos/perspective@^2.10.1", "@finos/perspective@^2.2.0":
   version "2.10.1"
@@ -531,7 +531,7 @@ less@^4.2.0:
     needle "^3.1.0"
     source-map "~0.6.0"
 
-lodash@^4.17.14, lodash@^4.17.4:
+lodash@^4.17.14, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
