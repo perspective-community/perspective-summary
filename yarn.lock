@@ -263,9 +263,9 @@
     playwright "1.45.0"
 
 "@prospective.co/procss@^0.1.13":
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/@prospective.co/procss/-/procss-0.1.15.tgz#d6c7eb7adf9c567713555c6d626be2a9f76f8a83"
-  integrity sha512-wTjE7IqzU+WmR0Qkyn9i/Mgr0EFHEzmOY8xifXrTIVdeEp8W9XikKE/y+ozWVPgEBM+A+WpF90/8G4u03yfsyQ==
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@prospective.co/procss/-/procss-0.1.16.tgz#dde546e1a109fbba8c7de61281ee49ca60488640"
+  integrity sha512-Glfk6HVFVMAZL1rYsNicsODiFrikgyquYkqePWnAL+IyFDu6wfM4SHw8i/0mYuQmIxi0FR2IJJxJNiGAD86v4g==
 
 "@types/less@^3.0.6":
   version "3.0.6"
