@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@finos/perspective": "^2.2.0",
-    "@finos/perspective-viewer": "^2.1.2",
+    "@finos/perspective-viewer": "^3.6.1",
     "dayjs": "^1.11.8"
   },
   "devDependencies": {
