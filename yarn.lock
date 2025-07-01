@@ -156,13 +156,21 @@
     "@lumino/widgets" "^1.37.0"
     lodash "^4.17.21"
 
-"@finos/perspective@^2.10.1", "@finos/perspective@^2.2.0":
+"@finos/perspective@^2.10.1":
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-2.10.1.tgz#22f3e806a55c1eb1ccf077c70d0d192ce8c1326a"
   integrity sha512-2WfHOKH8XEtkQqgg8T9OxWsE44Kr5T7iX3zqwVRrnllKySBRav76Ah2v2cKyMbZCsuieqWAFliIzIoJpI8ZNiA==
   dependencies:
     stoppable "1.1.0"
     ws "^6.1.2"
+
+"@finos/perspective@^3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-3.7.0.tgz#6037cc0d7bdc81ac3bd464e846b2755e709297a1"
+  integrity sha512-UCtIGE6fuT7A7ljS9R5EmDfN7PZd5DwMg3iAikB/WPVE7dOtulEbvbsnkUMKa78zL8aN5hAGR4h4hxWMlv7fnw==
+  dependencies:
+    stoppable "^1.1.0"
+    ws "^8.17.0"
 
 "@lumino/algorithm@^1.9.1", "@lumino/algorithm@^1.9.2":
   version "1.9.2"
@@ -723,7 +731,7 @@ source-map@~0.6.0:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
-stoppable@1.1.0:
+stoppable@1.1.0, stoppable@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/stoppable/-/stoppable-1.1.0.tgz#32da568e83ea488b08e4d7ea2c3bcc9d75015d5b"
   integrity sha512-KXDYZ9dszj6bzvnEMRYvxgeTHU74QBFL54XKtP3nyMuJ81CFYtABZ3bAzL2EdFUaEwJOBOgENyFj3R7oTzDyyw==
@@ -795,6 +803,11 @@ ws@^6.1.2:
   integrity sha512-jmTjYU0j60B+vHey6TfR3Z7RD61z/hmxBS3VMSGIrroOWXQEneK1zNuotOUrGyBHQj0yrpsLHPWtigEFd13ndA==
   dependencies:
     async-limiter "~1.0.0"
+
+ws@^8.17.0:
+  version "8.18.3"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.18.3.tgz#b56b88abffde62791c639170400c93dcb0c95472"
+  integrity sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg==
 
 yallist@^4.0.0:
   version "4.0.0"
