@@ -135,12 +135,19 @@
     node-fetch "^2.6.7"
     tar "^6.1.11"
 
-"@finos/perspective-viewer@^2.1.2", "@finos/perspective-viewer@^2.10.1":
+"@finos/perspective-viewer@^2.10.1":
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.10.1.tgz#e868ce45269852bc3e30639e8f4ab6c7735d4e9f"
   integrity sha512-G/P+EQXRTYurWpTjTU+VXKM3WHbbTjjpxEfLQLA9BS8gO0NwK1nXT7I5a9PEhVtRnVHEJrpNa2+VbIWTeG15dQ==
   dependencies:
     "@finos/perspective" "^2.10.1"
+
+"@finos/perspective-viewer@^3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-3.7.0.tgz#36c77d0ccfe5a2aa618676e9fa2610a0cc0f6804"
+  integrity sha512-ORtt5YDqKZFRd/8dEpMYZbVMwF7bDRijhPEs+nn6wLAFH0w4YInOcxNYno/fOWrYkQGN8Bw/mGUro4z5HAUK0A==
+  dependencies:
+    "@finos/perspective" "^3.7.0"
 
 "@finos/perspective-workspace@^2.1.2":
   version "2.10.1"
@@ -163,6 +170,14 @@
   dependencies:
     stoppable "1.1.0"
     ws "^6.1.2"
+
+"@finos/perspective@^3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-3.7.0.tgz#6037cc0d7bdc81ac3bd464e846b2755e709297a1"
+  integrity sha512-UCtIGE6fuT7A7ljS9R5EmDfN7PZd5DwMg3iAikB/WPVE7dOtulEbvbsnkUMKa78zL8aN5hAGR4h4hxWMlv7fnw==
+  dependencies:
+    stoppable "^1.1.0"
+    ws "^8.17.0"
 
 "@lumino/algorithm@^1.9.1", "@lumino/algorithm@^1.9.2":
   version "1.9.2"
@@ -723,7 +738,7 @@ source-map@~0.6.0:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
-stoppable@1.1.0:
+stoppable@1.1.0, stoppable@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/stoppable/-/stoppable-1.1.0.tgz#32da568e83ea488b08e4d7ea2c3bcc9d75015d5b"
   integrity sha512-KXDYZ9dszj6bzvnEMRYvxgeTHU74QBFL54XKtP3nyMuJ81CFYtABZ3bAzL2EdFUaEwJOBOgENyFj3R7oTzDyyw==
@@ -795,6 +810,11 @@ ws@^6.1.2:
   integrity sha512-jmTjYU0j60B+vHey6TfR3Z7RD61z/hmxBS3VMSGIrroOWXQEneK1zNuotOUrGyBHQj0yrpsLHPWtigEFd13ndA==
   dependencies:
     async-limiter "~1.0.0"
+
+ws@^8.17.0:
+  version "8.18.3"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.18.3.tgz#b56b88abffde62791c639170400c93dcb0c95472"
+  integrity sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg==
 
 yallist@^4.0.0:
   version "4.0.0"
