@@ -373,9 +373,9 @@ errno@^0.1.1:
     prr "~1.0.1"
 
 esbuild-plugin-less@^1.2.3:
-  version "1.3.23"
-  resolved "https://registry.yarnpkg.com/esbuild-plugin-less/-/esbuild-plugin-less-1.3.23.tgz#8b0aab294ca33fea1bd0b64d9e42926961f745fe"
-  integrity sha512-37NwM67WZKUv75OHjefx1KbzIzdTsoBZD7Npt/FvukM/iKt0RcVObmRY9MxJdTgdTIvCM6XniR1sVBJB3+6Wzw==
+  version "1.3.25"
+  resolved "https://registry.yarnpkg.com/esbuild-plugin-less/-/esbuild-plugin-less-1.3.25.tgz#8854bfeee215bbe6304786e412c2b9e9d0b6ca5b"
+  integrity sha512-K1lbEdjebX294VbOZjw38zChvGafoF5g3MZbY/P5yKo6jpEbxCniiULh9O4AUXjEWUe4vEBnfV/caVj2DWKprg==
   dependencies:
     "@types/less" "^3.0.8"
     less "^4.3.0"
