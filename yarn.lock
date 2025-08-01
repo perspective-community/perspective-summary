@@ -135,12 +135,20 @@
     node-fetch "^2.6.7"
     tar "^6.1.11"
 
-"@finos/perspective-viewer@^2.1.2", "@finos/perspective-viewer@^2.10.1":
+"@finos/perspective-viewer@^2.10.1":
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-2.10.1.tgz#e868ce45269852bc3e30639e8f4ab6c7735d4e9f"
   integrity sha512-G/P+EQXRTYurWpTjTU+VXKM3WHbbTjjpxEfLQLA9BS8gO0NwK1nXT7I5a9PEhVtRnVHEJrpNa2+VbIWTeG15dQ==
   dependencies:
     "@finos/perspective" "^2.10.1"
+
+"@finos/perspective-viewer@^3.7.4":
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/@finos/perspective-viewer/-/perspective-viewer-3.7.4.tgz#c3153fa982d8e8a5a5dc91abd9b027a297bee2ee"
+  integrity sha512-tyKs1Y4I3U8/3ym444J+HsjfIRziH8guRzABVTh/UAXBAwkmqi5bY4RISR9j5iqfOki6rn3kqq+opBmiEsm4yg==
+  dependencies:
+    "@finos/perspective" "^3.7.4"
+    pro_self_extracting_wasm "0.0.9"
 
 "@finos/perspective-workspace@^2.1.2":
   version "2.10.1"
@@ -163,6 +171,15 @@
   dependencies:
     stoppable "1.1.0"
     ws "^6.1.2"
+
+"@finos/perspective@^3.7.4":
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/@finos/perspective/-/perspective-3.7.4.tgz#c1f58dde4593a3dffcfaeeca48fc4d1608d7cea0"
+  integrity sha512-bTkxey2CEyK3VlV9Wz5gGhk+UrFiOYyqcKqM62CqEX7vIdQipUt38rM+rluYQoKsQsweKeHkMiw+3RV86szYbw==
+  dependencies:
+    pro_self_extracting_wasm "0.0.9"
+    stoppable "^1.1.0"
+    ws "^8.17.0"
 
 "@lumino/algorithm@^1.9.1", "@lumino/algorithm@^1.9.2":
   version "1.9.2"
@@ -307,6 +324,18 @@ basic-auth@^2.0.1:
   integrity sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==
   dependencies:
     safe-buffer "5.1.2"
+
+bn.js@^5.0.0:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.2.2.tgz#82c09f9ebbb17107cd72cb7fd39bd1f9d0aaa566"
+  integrity sha512-v2YAxEmKaBLahNwE1mjp4WON6huMNeuDvagFZW+ASCuA/ku0bXR9hSMw0XpiqMoA3+rmnyck/tPRSFQkoC9Cuw==
+
+buffer-pipe@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/buffer-pipe/-/buffer-pipe-0.0.3.tgz#242197681d4591e7feda213336af6c07a5ce2409"
+  integrity sha512-GlxfuD/NrKvCNs0Ut+7b1IHjylfdegMBxQIlZHj7bObKVQBxB5S84gtm2yu1mQ8/sSggceWBDPY0cPXgvX2MuA==
+  dependencies:
+    safe-buffer "^5.1.2"
 
 call-bind@^1.0.0:
   version "1.0.2"
@@ -526,6 +555,14 @@ is-what@^3.14.1:
   resolved "https://registry.yarnpkg.com/is-what/-/is-what-3.14.1.tgz#e1222f46ddda85dead0fd1c9df131760e77755c1"
   integrity sha512-sNxgpk9793nzSs7bA6JQJGeIuRBQhAaNGG77kzYQgMkrID+lS6SlK07K5LaptscDlSaIgH+GPFzf+d75FVxozA==
 
+leb128@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/leb128/-/leb128-0.0.5.tgz#84524a86ef7799fb3933ce41345f6490e27ac948"
+  integrity sha512-elbNtfmu3GndZbesVF6+iQAfVjOXW9bM/aax9WwMlABZW+oK9sbAZEXoewaPHmL34sxa8kVwWsru8cNE/yn2gg==
+  dependencies:
+    bn.js "^5.0.0"
+    buffer-pipe "0.0.3"
+
 less@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/less/-/less-4.3.0.tgz#ef0cfc260a9ca8079ed8d0e3512bda8a12c82f2a"
@@ -667,6 +704,15 @@ prettier@^3.0.1:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.3.2.tgz#03ff86dc7c835f2d2559ee76876a3914cec4a90a"
   integrity sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==
 
+pro_self_extracting_wasm@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/pro_self_extracting_wasm/-/pro_self_extracting_wasm-0.0.9.tgz#7e0505215cbc7396744088498eba2cb90d4e041e"
+  integrity sha512-95/dZfLmlGc/6Xp7gqvRBgXF8M+osw/Xtalz1U/Va8MpSC1TiR7rM4lEvAs1p/q4v/EZk6bow3tKEclbMGsSFQ==
+  dependencies:
+    http-server "^14.1.1"
+    leb128 "^0.0.5"
+    zx "^8.6.1"
+
 prr@~1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/prr/-/prr-1.0.1.tgz#d3fc114ba06995a45ec6893f484ceb1d78f5f476"
@@ -688,6 +734,11 @@ safe-buffer@5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
+
+safe-buffer@^5.1.2:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
+  integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
 
 "safer-buffer@>= 2.1.2 < 3.0.0":
   version "2.1.2"
@@ -723,7 +774,7 @@ source-map@~0.6.0:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
-stoppable@1.1.0:
+stoppable@1.1.0, stoppable@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/stoppable/-/stoppable-1.1.0.tgz#32da568e83ea488b08e4d7ea2c3bcc9d75015d5b"
   integrity sha512-KXDYZ9dszj6bzvnEMRYvxgeTHU74QBFL54XKtP3nyMuJ81CFYtABZ3bAzL2EdFUaEwJOBOgENyFj3R7oTzDyyw==
@@ -796,7 +847,17 @@ ws@^6.1.2:
   dependencies:
     async-limiter "~1.0.0"
 
+ws@^8.17.0:
+  version "8.18.3"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.18.3.tgz#b56b88abffde62791c639170400c93dcb0c95472"
+  integrity sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg==
+
 yallist@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
+
+zx@^8.6.1:
+  version "8.7.2"
+  resolved "https://registry.yarnpkg.com/zx/-/zx-8.7.2.tgz#69506115d31f36f2e8ebd7792dedf8dd0878398c"
+  integrity sha512-4Wtl46msLFx6QW6GjLu1aRnFhavukT4VSp4tdXvfRIBRNW3RP7Si3RlRFD7YeQeecQBacVFRQQgm5LTvE/YEGQ==
