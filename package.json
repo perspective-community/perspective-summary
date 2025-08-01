@@ -31,7 +31,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@finos/perspective": "^2.2.0",
+    "@finos/perspective": "^3.7.4",
     "@finos/perspective-viewer": "^2.1.2",
     "dayjs": "^1.11.8"
   },
