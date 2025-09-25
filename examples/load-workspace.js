@@ -1,3 +1,6 @@
+import "../node_modules/@finos/perspective-viewer/dist/cdn/perspective-viewer.js";
+import "../node_modules/@finos/perspective-workspace/dist/cdn/perspective-workspace.js";
+import "../dist/cdn/perspective-viewer-summary.js";
 import * as perspective from "../node_modules/@finos/perspective/dist/cdn/perspective.js";
 
 const workspace = document.getElementById("workspace");
@@ -134,8 +137,8 @@ const DEFAULT_LAYOUT = {
 async function load() {
   let resp = await fetch("superstore.csv");
   let csv = await resp.text();
-  const worker = perspective.shared_worker();
-  workspace.tables.set("superstore", await worker.table(csv));
+  const worker = await perspective.worker();
+  workspace.addTable("superstore", worker.table(csv));
   workspace.restore(DEFAULT_LAYOUT);
 }
 
