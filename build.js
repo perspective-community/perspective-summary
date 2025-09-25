@@ -1,10 +1,50 @@
-const {
-  NodeModulesExternal,
-} = require("@finos/perspective-esbuild-plugin/external");
-const { build } = require("@finos/perspective-esbuild-plugin/build");
 const { BuildCss } = require("@prospective.co/procss/target/cjs/procss.js");
 const fs = require("fs");
 const path_mod = require("path");
+const esbuild = require("esbuild");
+
+const DEFAULT_BUILD = {
+  target: ["es2022"],
+  bundle: true,
+  minify: !process.env.PSP_DEBUG,
+  sourcemap: true,
+  metafile: true,
+  entryNames: "[name]",
+  chunkNames: "[name]",
+  assetNames: "[name]",
+};
+
+/**
+ * An `esbuild` plugin to mark `node_modules` dependencies as external.
+ * @returns 
+ */
+function NodeModulesExternal(whitelist) {
+  function setup(build) {
+    build.onResolve({ filter: /^[A-Za-z0-9\@]/ }, (args) => {
+      return {
+        path: args.path,
+        external: true,
+        namespace: "skip-node-modules",
+      };
+    });
+  }
+
+  return {
+    name: "node_modules_external",
+    setup,
+  };
+}
+
+/**
+ * A build convenienve wrapper.
+ * @param {any} config An `esbuild.build` config.
+ */
+async function build(config) {
+  await esbuild.build({
+    ...DEFAULT_BUILD,
+    ...config,
+  });
+}
 
 const BUILD = [
   {

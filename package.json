@@ -31,13 +31,16 @@
     "access": "public"
   },
   "dependencies": {
-    "@finos/perspective": "^2.2.0",
-    "@finos/perspective-viewer": "^2.1.2",
     "dayjs": "^1.11.8"
   },
+  "peerDependencies": {
+    "@finos/perspective": "^3.8.0",
+    "@finos/perspective-viewer": "^3.8.0"
+  },
   "devDependencies": {
-    "@finos/perspective-esbuild-plugin": "^3.2.1",
-    "@finos/perspective-workspace": "^2.1.2",
+    "@finos/perspective": "^3.8.0",
+    "@finos/perspective-viewer": "^3.8.0",
+    "@finos/perspective-workspace": "^3.8.0",
     "@playwright/test": "^1.36.2",
     "@prospective.co/procss": "^0.1.13",
     "esbuild": "^0.25.0",
