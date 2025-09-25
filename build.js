@@ -16,7 +16,7 @@ const DEFAULT_BUILD = {
 
 /**
  * An `esbuild` plugin to mark `node_modules` dependencies as external.
- * @returns 
+ * @returns
  */
 function NodeModulesExternal(whitelist) {
   function setup(build) {
