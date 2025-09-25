@@ -1,10 +1,32 @@
 const {
   NodeModulesExternal,
 } = require("@finos/perspective-esbuild-plugin/external");
-const { build } = require("@finos/perspective-esbuild-plugin/build");
 const { BuildCss } = require("@prospective.co/procss/target/cjs/procss.js");
 const fs = require("fs");
 const path_mod = require("path");
+const esbuild = require("esbuild");
+
+const DEFAULT_BUILD = {
+  target: ["es2022"],
+  bundle: true,
+  minify: !process.env.PSP_DEBUG,
+  sourcemap: true,
+  metafile: true,
+  entryNames: "[name]",
+  chunkNames: "[name]",
+  assetNames: "[name]",
+};
+
+/**
+ * A build convenience wrapper.
+ * @param {any} config An `esbuild.build` config.
+ */
+async function build(config) {
+  await esbuild.build({
+    ...DEFAULT_BUILD,
+    ...config,
+  });
+}
 
 const BUILD = [
   {

@@ -22,30 +22,30 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-    - name: Setup Node
-      uses: actions-ext/node/setup@v1
-      with:
-        manager: pnpm
-        version: '22.x'
+      - name: Use Node.js
+        uses: actions-ext/node/setup@main
+        with:
+          version: '22.x'
+          js_folder: '.'
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Install playwright
-      run: npx playwright install
+      - name: Install playwright
+        run: npx playwright install
 
-    - name: Build
-      run: pnpm run build
+      - name: Build
+        run: pnpm run build
 
-    - name: Lint
-      run: pnpm run lint
+      - name: Lint
+        run: pnpm run lint
 
-    - name: Test
-      run: pnpm run test
-      env:
-        CI: 1
+      - name: Test
+        run: pnpm run test
+        env:
+          CI: 1
 
-    - name: Upload coverage
-      uses: codecov/codecov-action@v4
+      - name: Upload coverage
+        uses: codecov/codecov-action@v5

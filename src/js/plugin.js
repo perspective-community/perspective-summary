@@ -112,7 +112,13 @@ export class PerspectiveViewerSummaryPluginElement extends HTMLElement {
 
   async render(view) {
     // pull config
-    const config = await view.get_config();
+
+    // TODO(texodus): This is a bug in Perspective 3.x, fixed
+    // [here](https://github.com/finos/perspective/pull/3053). This can be
+    // be changed back by updating the bounds to 3.8.1
+
+    // const config = await view.get_config();
+    const config = await this.parentElement.save();
 
     this._config = {
       ...this._config,

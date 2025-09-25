@@ -8,22 +8,22 @@ importers:
 
   .:
     dependencies:
-      '@finos/perspective':
-        specifier: ^3.6.1
-        version: 3.6.1
-      '@finos/perspective-viewer':
-        specifier: ^3.6.1
-        version: 3.6.1
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
     devDependencies:
+      '@finos/perspective':
+        specifier: ^3.8.0
+        version: 3.8.0
       '@finos/perspective-esbuild-plugin':
         specifier: ^3.2.1
         version: 3.2.1
+      '@finos/perspective-viewer':
+        specifier: ^3.8.0
+        version: 3.8.0
       '@finos/perspective-workspace':
-        specifier: ^3.6.1
-        version: 3.6.1
+        specifier: ^3.8.0
+        version: 3.8.0
       '@playwright/test':
         specifier: ^1.52.0
         version: 1.52.0
@@ -198,14 +198,14 @@ packages:
   '@finos/perspective-esbuild-plugin@3.2.1':
     resolution: {integrity: sha512-6EqacFm5rGA0EtzD2p9RuxtVLEci9AEC4NPiOCpqFdgxxX8Msv8LlL7Ml3opxyaEeKpndVsLFdOD5U+PNaaa+A==}
 
-  '@finos/perspective-viewer@3.6.1':
-    resolution: {integrity: sha512-qK4aTxJGQ+4/JwLUQd+zRJziyZYxXcHX0RewdFUubOduz9qwzl4jr0dtSeb3/m2HPA89ZeSlDkNN1m3jbeV4EQ==}
+  '@finos/perspective-viewer@3.8.0':
+    resolution: {integrity: sha512-u5dtQw4NzlbMOPZgvi+Tr1p0ZDFoYLne9tV99yEGIEqhQFWG3Ke2RL/562RjDm7o2Vk/nPHP+K9RkF/9KceBMg==}
 
-  '@finos/perspective-workspace@3.6.1':
-    resolution: {integrity: sha512-ZAk/+5Jox06u7XI7FqkjCkJLkRgite5SUX/fbThh7Tn1ILCEw+dUjidxplSf4g+kieUpxxXkZLYaErFVuWhAqw==}
+  '@finos/perspective-workspace@3.8.0':
+    resolution: {integrity: sha512-bcL/eiRJvy6XxM+VoxBkGu84tERhSlpC2TnPAUmuYP88CS7mS7uW5JnaHTkHYJ4IQjFSAOqIGMblZdhnXsvFiA==}
 
-  '@finos/perspective@3.6.1':
-    resolution: {integrity: sha512-n5WiF8J8L8h7sacyf9dggKARQZdboL1eCWdQeXIFoITALlcQBkYGcdXSNkvmFnf4lz1LV7BJuEf7EVN3cxGWzA==}
+  '@finos/perspective@3.8.0':
+    resolution: {integrity: sha512-9pot9YJq1RDdIRJlffp97ktbd0Sxk74mnoSOcf6U/luWceyEnfceQYHwJqUPR1IMNb9H1ZC6NQTbU4WRUT3hAQ==}
 
   '@lumino/algorithm@2.0.3':
     resolution: {integrity: sha512-DIcF7cIrGEC1Wh8DNjdwaL7IdcNs4Jj1VjO/90oHefeQPszKgc6DSfCxvbQiRanKR6tl/JL7tq4ZRPZES2oVAA==}
@@ -267,6 +267,12 @@ packages:
   basic-auth@2.0.1:
     resolution: {integrity: sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==}
     engines: {node: '>= 0.8'}
+
+  bn.js@5.2.2:
+    resolution: {integrity: sha512-v2YAxEmKaBLahNwE1mjp4WON6huMNeuDvagFZW+ASCuA/ku0bXR9hSMw0XpiqMoA3+rmnyck/tPRSFQkoC9Cuw==}
+
+  buffer-pipe@0.0.3:
+    resolution: {integrity: sha512-GlxfuD/NrKvCNs0Ut+7b1IHjylfdegMBxQIlZHj7bObKVQBxB5S84gtm2yu1mQ8/sSggceWBDPY0cPXgvX2MuA==}
 
   call-bind-apply-helpers@1.0.2:
     resolution: {integrity: sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==}
@@ -420,6 +426,9 @@ packages:
   is-what@3.14.1:
     resolution: {integrity: sha512-sNxgpk9793nzSs7bA6JQJGeIuRBQhAaNGG77kzYQgMkrID+lS6SlK07K5LaptscDlSaIgH+GPFzf+d75FVxozA==}
 
+  leb128@0.0.5:
+    resolution: {integrity: sha512-elbNtfmu3GndZbesVF6+iQAfVjOXW9bM/aax9WwMlABZW+oK9sbAZEXoewaPHmL34sxa8kVwWsru8cNE/yn2gg==}
+
   less@4.3.0:
     resolution: {integrity: sha512-X9RyH9fvemArzfdP8Pi3irr7lor2Ok4rOttDXBhlwDg+wKQsXOXgHWduAJE1EsF7JJx0w0bcO6BC6tCKKYnXKA==}
     engines: {node: '>=14'}
@@ -511,6 +520,10 @@ packages:
   prettier@3.5.3:
     resolution: {integrity: sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==}
     engines: {node: '>=14'}
+    hasBin: true
+
+  pro_self_extracting_wasm@0.0.9:
+    resolution: {integrity: sha512-95/dZfLmlGc/6Xp7gqvRBgXF8M+osw/Xtalz1U/Va8MpSC1TiR7rM4lEvAs1p/q4v/EZk6bow3tKEclbMGsSFQ==}
     hasBin: true
 
   prr@1.0.1:
@@ -609,6 +622,11 @@ packages:
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
 
+  zx@8.8.3:
+    resolution: {integrity: sha512-8GWaBTVU6wzTdqO0v5qwGMUFLCYduW7UUxaliRD+FXGRfYM8KLDGL93idbdGFLomHDi18ZxCfhAJqYZB8rJNvw==}
+    engines: {node: '>= 12.17.0'}
+    hasBin: true
+
 snapshots:
 
   '@esbuild/aix-ppc64@0.25.4':
@@ -693,17 +711,20 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@finos/perspective-viewer@3.6.1':
+  '@finos/perspective-viewer@3.8.0':
     dependencies:
-      '@finos/perspective': 3.6.1
+      '@finos/perspective': 3.8.0
+      pro_self_extracting_wasm: 0.0.9
     transitivePeerDependencies:
       - bufferutil
+      - debug
+      - supports-color
       - utf-8-validate
 
-  '@finos/perspective-workspace@3.6.1':
+  '@finos/perspective-workspace@3.8.0':
     dependencies:
-      '@finos/perspective': 3.6.1
-      '@finos/perspective-viewer': 3.6.1
+      '@finos/perspective': 3.8.0
+      '@finos/perspective-viewer': 3.8.0
       '@lumino/algorithm': 2.0.3
       '@lumino/commands': 2.3.2
       '@lumino/coreutils': 2.2.1
@@ -715,14 +736,19 @@ snapshots:
       lodash: 4.17.21
     transitivePeerDependencies:
       - bufferutil
+      - debug
+      - supports-color
       - utf-8-validate
 
-  '@finos/perspective@3.6.1':
+  '@finos/perspective@3.8.0':
     dependencies:
+      pro_self_extracting_wasm: 0.0.9
       stoppable: 1.1.0
       ws: 8.18.2
     transitivePeerDependencies:
       - bufferutil
+      - debug
+      - supports-color
       - utf-8-validate
 
   '@lumino/algorithm@2.0.3': {}
@@ -803,6 +829,12 @@ snapshots:
   async@3.2.6: {}
 
   basic-auth@2.0.1:
+    dependencies:
+      safe-buffer: 5.1.2
+
+  bn.js@5.2.2: {}
+
+  buffer-pipe@0.0.3:
     dependencies:
       safe-buffer: 5.1.2
 
@@ -980,6 +1012,11 @@ snapshots:
 
   is-what@3.14.1: {}
 
+  leb128@0.0.5:
+    dependencies:
+      bn.js: 5.2.2
+      buffer-pipe: 0.0.3
+
   less@4.3.0:
     dependencies:
       copy-anything: 2.0.6
@@ -1058,6 +1095,15 @@ snapshots:
       - supports-color
 
   prettier@3.5.3: {}
+
+  pro_self_extracting_wasm@0.0.9:
+    dependencies:
+      http-server: 14.1.1
+      leb128: 0.0.5
+      zx: 8.8.3
+    transitivePeerDependencies:
+      - debug
+      - supports-color
 
   prr@1.0.1:
     optional: true
@@ -1150,3 +1196,5 @@ snapshots:
   ws@8.18.2: {}
 
   yallist@4.0.0: {}
+
+  zx@8.8.3: {}
