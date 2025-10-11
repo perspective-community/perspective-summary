@@ -49,3 +49,13 @@ jobs:
 
       - name: Upload coverage
         uses: codecov/codecov-action@v5
+
+      - name: Build docs
+        run: sed 's%\./%\./examples/%g' examples/index.html > index.html
+
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          publish_branch: gh-pages
+          publish_dir: .
+          force_orphan: true
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
