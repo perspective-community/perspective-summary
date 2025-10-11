@@ -57,5 +57,6 @@ jobs:
         with:
           publish_branch: gh-pages
           publish_dir: .
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           force_orphan: true
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
