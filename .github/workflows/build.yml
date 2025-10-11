@@ -51,7 +51,7 @@ jobs:
         uses: codecov/codecov-action@v5
 
       - name: Build docs
-        run: sed 's%\./%\./examples/%g' examples/index.html > index.html
+        run: sed 's%\./%\./examples/%g' examples/index.html > index.html && rm -rf .gitignore
 
       - uses: peaceiris/actions-gh-pages@v4
         with:
