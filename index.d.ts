@@ -11,8 +11,7 @@ declare global {
   }
 }
 
-interface PerspectiveViewerSummaryPluginElement
-  extends IPerspectiveViewerPlugin {}
+interface PerspectiveViewerSummaryPluginElement extends IPerspectiveViewerPlugin {}
 
 export declare class PerspectiveViewerSummaryPluginElement
   extends HTMLElement
