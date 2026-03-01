@@ -1,0 +1,152 @@
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+// ┃ ██████ ██████ ██████       █      █      █      █      █ █▄  ▀███ █       ┃
+// ┃ ▄▄▄▄▄█ █▄▄▄▄▄ ▄▄▄▄▄█  ▀▀▀▀▀█▀▀▀▀▀ █ ▀▀▀▀▀█ ████████▌▐███ ███▄  ▀█ █ ▀▀▀▀▀ ┃
+// ┃ █▀▀▀▀▀ █▀▀▀▀▀ █▀██▀▀ ▄▄▄▄▄ █ ▄▄▄▄▄█ ▄▄▄▄▄█ ████████▌▐███ █████▄   █ ▄▄▄▄▄ ┃
+// ┃ █      ██████ █  ▀█▄       █ ██████      █      ███▌▐███ ███████▄ █       ┃
+// ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+// ┃ Copyright (c) 2017, the Perspective Authors.                              ┃
+// ┃ ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌ ┃
+// ┃ This file is part of the Perspective library, distributed under the terms ┃
+// ┃ of the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). ┃
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+:host {
+    #editor-container {
+        display: flex;
+        flex-direction: column;
+        min-width: 0px;
+        border: 1px solid var(--inactive--color);
+        background-color: var(--plugin--background);
+        border-radius: 3px;
+        overflow: hidden;
+
+        .error {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-height: 1.5em;
+            color: var(--error--color);
+            top: 0.5em;
+            left: 0.5em;
+            position: absolute;
+            font-size: 10px;
+            width: calc(100% - 24px);
+        }
+
+        &.disabled {
+            #textarea_editable,
+            #line_numbers,
+            #editor {
+                background-color: var(--inactive--border-color);
+            }
+        }
+    }
+
+    #attributes-expr {
+        flex: 1 1 auto;
+        margin-top: 1px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #attribtues-tab .split-panel-child {
+        max-height: 400px;
+        flex-direction: column;
+    }
+
+    #expression-editor {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #editor-alias-container {
+        flex: 0 0 auto;
+        margin-bottom: 2px;
+    }
+
+    .item_title {
+        margin-bottom: 3px;
+        margin-top: 4px;
+    }
+
+    input#expression-name {
+        padding-left: 8px;
+        color: inherit;
+
+        &:placeholder-shown {
+            background-color: transparent;
+        }
+    }
+
+    .split-panel.orient-vertical > .split-panel-child #editor-container {
+        height: calc(100% - 15px);
+    }
+
+    #horizontal-resize {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 8px;
+
+        &:hover {
+            cursor: ew-resize;
+            background: rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    #psp-expression-editor-actions {
+        display: flex;
+        gap: 0.333333em;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    #psp-expression-editor-meta {
+        display: flex;
+        flex: 0 0 24px;
+        flex-direction: column;
+        padding: 0.5em;
+        gap: 0.25em;
+        height: 24px;
+        position: relative;
+    }
+
+    #save-settings,
+    #danger-zone {
+        display: flex;
+        gap: 0.333333em;
+    }
+    #save-settings-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.333333em;
+    }
+
+    .psp-expression-editor__button {
+        flex: 1;
+        justify-content: center;
+        font-family: inherit;
+        font-size: 0.8333em;
+        text-transform: uppercase;
+        border: 1px solid var(--icon--color);
+        border-radius: 2px;
+        height: 24px;
+        padding: 2px 12px;
+        display: flex;
+        align-items: center;
+        background: none;
+        color: inherit;
+
+        &:not([disabled]):hover {
+            cursor: pointer;
+            background-color: var(--icon--color);
+            color: var(--plugin--background);
+        }
+
+        &[disabled] {
+            cursor: not-allowed;
+            opacity: 0.2;
+        }
+    }
+}

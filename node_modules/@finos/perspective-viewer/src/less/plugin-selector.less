@@ -1,0 +1,173 @@
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+// ┃ ██████ ██████ ██████       █      █      █      █      █ █▄  ▀███ █       ┃
+// ┃ ▄▄▄▄▄█ █▄▄▄▄▄ ▄▄▄▄▄█  ▀▀▀▀▀█▀▀▀▀▀ █ ▀▀▀▀▀█ ████████▌▐███ ███▄  ▀█ █ ▀▀▀▀▀ ┃
+// ┃ █▀▀▀▀▀ █▀▀▀▀▀ █▀██▀▀ ▄▄▄▄▄ █ ▄▄▄▄▄█ ▄▄▄▄▄█ ████████▌▐███ █████▄   █ ▄▄▄▄▄ ┃
+// ┃ █      ██████ █  ▀█▄       █ ██████      █      ███▌▐███ ███████▄ █       ┃
+// ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+// ┃ Copyright (c) 2017, the Perspective Authors.                              ┃
+// ┃ ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌ ┃
+// ┃ This file is part of the Perspective library, distributed under the terms ┃
+// ┃ of the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). ┃
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+@import "dom/scrollbar.less";
+
+:host {
+    #settings_panel {
+        #plugin_selector_container.open ~ * {
+            opacity: 0;
+        }
+
+        #plugin_selector_container {
+            min-height: 48px;
+            display: flex;
+            white-space: nowrap;
+            flex-direction: column;
+            flex: 0 0 auto;
+
+            // Overflow the padding bounds of the container
+            // TODO these bounds exist to protext the resizer and scrollbar (left &
+            // right resp) but we really should find a way to remove it and delegate
+            // to sub-containers.
+            margin: 0 0px 0 -9px;
+
+            #plugin_selector_border {
+                height: 2px;
+                min-height: 2px;
+                width: 100%;
+                background-color: var(--inactive--color, #6e6e6e);
+                margin-top: 1px;
+            }
+
+            .plugin-selector-options {
+                overflow-y: auto;
+                @include scrollbar;
+            }
+
+            &.open {
+                position: absolute;
+                margin: 0;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+
+                // This element is first in the container but visually "overlaps"
+                // when expanded
+                z-index: 3;
+                color: var(--icon--color, #042121);
+                // background: var(--plugin--background);
+
+                .plugin-select-item {
+                    padding-left: 8px;
+                }
+            }
+
+            .plugin-select-item-name {
+                padding-left: 10px;
+                font-size: 1.33333em;
+            }
+
+            .plugin-select-item-name:before {
+                // This value is set in a `style` tag from Yew!
+                content: var(--default-column-title);
+            }
+
+            .plugin-select-item {
+                // width: 48px;
+                padding-left: 9px;
+                height: 48px;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid var(--inactive--color, #6e6e6e);
+                cursor: pointer;
+            }
+
+            // Hadn't seen this technique before, makes sizing/positioning these
+            // trivial.  There's some indication this doesn't work on non-chrome
+            // https://stackoverflow.com/questions/36259410/how-to-set-size-of-svg-image-in-before-pseudo-class
+            // https://stackoverflow.com/questions/21509982/change-svg-fill-color-in-before-or-after-css
+            .plugin-select-item:before {
+                content: "";
+                display: inline-block;
+                height: 35px;
+                width: 40px;
+                -webkit-mask-size: cover;
+                mask-size: cover;
+                background-repeat: no-repeat;
+                background-color: var(--icon--color);
+            }
+
+            .plugin-select-item:hover {
+                background-color: var(--icon--color, #042121);
+                color: var(--plugin--background, #fdfffd);
+            }
+
+            .plugin-select-item:hover:before {
+                background-color: var(--plugin--background, #fdfffd);
+            }
+
+            .plugin-select-item[data-plugin="Candlestick"]:before {
+                // mask-image: var(--plugin-selector-candlestick--content);
+                -webkit-mask-image: var(--plugin-selector-candlestick--content);
+            }
+
+            .plugin-select-item[data-plugin="Heatmap"]:before {
+                -webkit-mask-image: var(--plugin-selector-heatmap--content);
+            }
+
+            .plugin-select-item[data-plugin="Map Scatter"]:before {
+                -webkit-mask-image: var(--plugin-selector-map-scatter--content);
+            }
+
+            .plugin-select-item[data-plugin="OHLC"]:before {
+                -webkit-mask-image: var(--plugin-selector-ohlc--content);
+            }
+
+            .plugin-select-item[data-plugin="Sunburst"]:before {
+                -webkit-mask-image: var(--plugin-selector-sunburst--content);
+            }
+
+            .plugin-select-item[data-plugin="Treemap"]:before {
+                -webkit-mask-image: var(--plugin-selector-treemap--content);
+            }
+
+            .plugin-select-item[data-plugin="X Bar"]:before {
+                -webkit-mask-image: var(--plugin-selector-x-bar--content);
+            }
+
+            .plugin-select-item[data-plugin="X/Y Line"]:before {
+                -webkit-mask-image: var(--plugin-selector-x-y-line--content);
+            }
+
+            .plugin-select-item[data-plugin="X/Y Scatter"]:before {
+                -webkit-mask-image: var(--plugin-selector-x-y-scatter--content);
+            }
+
+            .plugin-select-item[data-plugin="Y Area"]:before {
+                -webkit-mask-image: var(--plugin-selector-y-area--content);
+            }
+
+            .plugin-select-item[data-plugin="Y Bar"]:before {
+                -webkit-mask-image: var(--plugin-selector-y-bar--content);
+            }
+
+            .plugin-select-item[data-plugin="Y Line"]:before {
+                -webkit-mask-image: var(--plugin-selector-y-line--content);
+            }
+
+            .plugin-select-item[data-plugin="Y Scatter"]:before {
+                -webkit-mask-image: var(--plugin-selector-y-scatter--content);
+            }
+
+            .plugin-select-item[data-plugin="Datagrid"]:before {
+                -webkit-mask-image: var(--plugin-selector-datagrid--content);
+            }
+        }
+
+        #plugin_selector {
+            flex-grow: 1;
+        }
+    }
+}

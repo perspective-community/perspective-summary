@@ -1,0 +1,63 @@
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+// ┃ ██████ ██████ ██████       █      █      █      █      █ █▄  ▀███ █       ┃
+// ┃ ▄▄▄▄▄█ █▄▄▄▄▄ ▄▄▄▄▄█  ▀▀▀▀▀█▀▀▀▀▀ █ ▀▀▀▀▀█ ████████▌▐███ ███▄  ▀█ █ ▀▀▀▀▀ ┃
+// ┃ █▀▀▀▀▀ █▀▀▀▀▀ █▀██▀▀ ▄▄▄▄▄ █ ▄▄▄▄▄█ ▄▄▄▄▄█ ████████▌▐███ █████▄   █ ▄▄▄▄▄ ┃
+// ┃ █      ██████ █  ▀█▄       █ ██████      █      ███▌▐███ ███████▄ █       ┃
+// ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+// ┃ Copyright (c) 2017, the Perspective Authors.                              ┃
+// ┃ ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌ ┃
+// ┃ This file is part of the Perspective library, distributed under the terms ┃
+// ┃ of the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). ┃
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+:host {
+    .dropdown-width-container {
+        position: relative;
+        flex: 1 1 auto;
+        height: 100%;
+
+        &:after {
+            content: attr(data-value) " ";
+            visibility: hidden;
+            white-space: nowrap;
+            padding-right: 17px;
+        }
+
+        select {
+            position: absolute;
+            left: 0px;
+            right: 4px;
+            top: 0px;
+            bottom: 0px;
+            cursor: pointer;
+        }
+    }
+
+    select {
+        border-radius: 0;
+        border-width: 0px;
+        outline: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        color: inherit;
+        padding: 0px 12px 0px 0px;
+        font-size: 10px;
+        font-family: inherit;
+        background-color: transparent;
+        background-image: var(--select-arrow--background-image);
+        background-position: right 2px center;
+        background-repeat: no-repeat;
+
+        &.invert:focus-within,
+        &.invert:hover {
+            background-image: var(--select-arrow--hover--background-image);
+        }
+
+        option {
+            color: var(--icon--color, inherit);
+            background: var(--plugin--background, transparent);
+        }
+    }
+}
