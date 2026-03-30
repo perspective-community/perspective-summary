@@ -48,7 +48,7 @@ jobs:
           CI: 1
 
       - name: Upload coverage
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
 
       - name: Build docs
         run: sed 's%\./%\./examples/%g' examples/index.html > index.html && rm -rf .gitignore
