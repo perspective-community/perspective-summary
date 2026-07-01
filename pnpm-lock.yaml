@@ -41,7 +41,7 @@ importers:
         version: 14.1.1
       prettier:
         specifier: ^3.5.3
-        version: 3.8.1
+        version: 3.9.4
 
 packages:
 
@@ -523,8 +523,8 @@ packages:
     resolution: {integrity: sha512-yuGIEjDAYnnOex9ddMnKZEMFE0CcGo6zbfzDklkmT1m5z734ss6JMzN9rNB3+RR7iS+F10D4/BVIaXOyh8PQKw==}
     engines: {node: '>= 10.12'}
 
-  prettier@3.8.1:
-    resolution: {integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==}
+  prettier@3.9.4:
+    resolution: {integrity: sha512-yWG/o/4oJfo036EKAfK6ACAoDOfHeRHx4tuxkfBZiauURiaSmYwlpOr5LQqKtIkRD2z1PLteme2WoxEnj4tHTg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -1107,7 +1107,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  prettier@3.8.1: {}
+  prettier@3.9.4: {}
 
   pro_self_extracting_wasm@0.0.9:
     dependencies:
