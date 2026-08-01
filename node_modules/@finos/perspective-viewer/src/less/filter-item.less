@@ -1,0 +1,126 @@
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+// ┃ ██████ ██████ ██████       █      █      █      █      █ █▄  ▀███ █       ┃
+// ┃ ▄▄▄▄▄█ █▄▄▄▄▄ ▄▄▄▄▄█  ▀▀▀▀▀█▀▀▀▀▀ █ ▀▀▀▀▀█ ████████▌▐███ ███▄  ▀█ █ ▀▀▀▀▀ ┃
+// ┃ █▀▀▀▀▀ █▀▀▀▀▀ █▀██▀▀ ▄▄▄▄▄ █ ▄▄▄▄▄█ ▄▄▄▄▄█ ████████▌▐███ █████▄   █ ▄▄▄▄▄ ┃
+// ┃ █      ██████ █  ▀█▄       █ ██████      █      ███▌▐███ ███████▄ █       ┃
+// ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+// ┃ Copyright (c) 2017, the Perspective Authors.                              ┃
+// ┃ ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌ ┃
+// ┃ This file is part of the Perspective library, distributed under the terms ┃
+// ┃ of the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). ┃
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+:host {
+    :-webkit-calendar-picker-indicator {
+        filter: var(--calendar--filter, none);
+    }
+
+    #top_panel {
+        .rrow {
+            .input-sizer {
+                display: inline-grid;
+                align-items: center;
+                position: relative;
+                margin-top: 1px;
+                min-width: 45px;
+                overflow: hidden;
+                height: 16px;
+
+                &:after,
+                input,
+                textarea {
+                    width: auto;
+                    grid-area: 1 / 1;
+                    font-family: inherit;
+                }
+
+                input,
+                textarea {
+                    grid-area: 1 / 1;
+                    padding: 0;
+                    border: none;
+                    border-bottom: 1px solid var(--inactive--color, #ccc);
+                    background: transparent;
+                    color: inherit;
+                }
+
+                &:after {
+                    content: attr(data-value) " ";
+                    color: var(--inactive--color, inherit);
+                    visibility: hidden;
+                    white-space: nowrap;
+                    padding-right: 18px;
+                }
+
+                &.num-filter {
+                    input,
+                    textarea {
+                        width: 100%;
+                        position: absolute;
+                    }
+                }
+
+                &.num-filter:after {
+                    padding-right: 25px;
+                }
+
+                input.date-filter {
+                    width: 120px;
+                }
+
+                input.datetime-filter {
+                    width: 230px;
+                }
+
+                input.time-filter {
+                    grid-area: 1/2;
+                }
+
+                &:focus-within {
+                    textarea:focus,
+                    input:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        // The filter comparator
+        #filter {
+            .pivot-column {
+                input {
+                    font-size: 1em;
+                }
+
+                input[type="search"] {
+                    text-overflow: ellipsis;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    &::-webkit-search-cancel-button {
+                        cursor: pointer;
+                        opacity: 1;
+                        margin-left: 6px;
+                    }
+
+                    &:not(:empty)::-webkit-search-cancel-button {
+                        opacity: 1;
+                    }
+                }
+
+                .dropdown-width-container {
+                    height: 100%;
+                    flex: 0 0 auto;
+
+                    select {
+                        padding-right: 12px;
+                        padding-left: 4px;
+                        max-width: 100%;
+                        position: absolute;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
