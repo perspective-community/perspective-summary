@@ -41,7 +41,7 @@ importers:
         version: 14.1.1
       prettier:
         specifier: ^3.5.3
-        version: 3.8.1
+        version: 3.9.6
 
 packages:
 
@@ -203,15 +203,19 @@ packages:
 
   '@finos/perspective-esbuild-plugin@3.2.1':
     resolution: {integrity: sha512-6EqacFm5rGA0EtzD2p9RuxtVLEci9AEC4NPiOCpqFdgxxX8Msv8LlL7Ml3opxyaEeKpndVsLFdOD5U+PNaaa+A==}
+    deprecated: This package is no longer maintained. See https://perspective-dev.github.io/ for migration docs
 
   '@finos/perspective-viewer@3.8.0':
     resolution: {integrity: sha512-u5dtQw4NzlbMOPZgvi+Tr1p0ZDFoYLne9tV99yEGIEqhQFWG3Ke2RL/562RjDm7o2Vk/nPHP+K9RkF/9KceBMg==}
+    deprecated: This package is no longer maintained. Please upgrade to @perspective-dev/viewer
 
   '@finos/perspective-workspace@3.8.0':
     resolution: {integrity: sha512-bcL/eiRJvy6XxM+VoxBkGu84tERhSlpC2TnPAUmuYP88CS7mS7uW5JnaHTkHYJ4IQjFSAOqIGMblZdhnXsvFiA==}
+    deprecated: This package is no longer maintained. Please upgrade to @perspective-dev/viewer
 
   '@finos/perspective@3.8.0':
     resolution: {integrity: sha512-9pot9YJq1RDdIRJlffp97ktbd0Sxk74mnoSOcf6U/luWceyEnfceQYHwJqUPR1IMNb9H1ZC6NQTbU4WRUT3hAQ==}
+    deprecated: This package is no longer maintained. Please upgrade to @perspective-dev/client
 
   '@lumino/algorithm@2.0.3':
     resolution: {integrity: sha512-DIcF7cIrGEC1Wh8DNjdwaL7IdcNs4Jj1VjO/90oHefeQPszKgc6DSfCxvbQiRanKR6tl/JL7tq4ZRPZES2oVAA==}
@@ -523,8 +527,8 @@ packages:
     resolution: {integrity: sha512-yuGIEjDAYnnOex9ddMnKZEMFE0CcGo6zbfzDklkmT1m5z734ss6JMzN9rNB3+RR7iS+F10D4/BVIaXOyh8PQKw==}
     engines: {node: '>= 10.12'}
 
-  prettier@3.8.1:
-    resolution: {integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==}
+  prettier@3.9.6:
+    resolution: {integrity: sha512-OpN0zzVdiaiAhxpuuj5efpIS4sY9j7bY6uR5mnj5yPzGkdkjNKSJeUThPb60Jw29QuAZgA4o+/iB49kFiaBX6g==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -1107,7 +1111,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  prettier@3.8.1: {}
+  prettier@3.9.6: {}
 
   pro_self_extracting_wasm@0.0.9:
     dependencies:
