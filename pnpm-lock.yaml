@@ -653,8 +653,8 @@ packages:
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
 
-  zx@8.8.3:
-    resolution: {integrity: sha512-8GWaBTVU6wzTdqO0v5qwGMUFLCYduW7UUxaliRD+FXGRfYM8KLDGL93idbdGFLomHDi18ZxCfhAJqYZB8rJNvw==}
+  zx@8.8.5:
+    resolution: {integrity: sha512-SNgDF5L0gfN7FwVOdEFguY3orU5AkfFZm9B5YSHog/UDHv+lvmd82ZAsOenOkQixigwH2+yyH198AwNdKhj+RA==}
     engines: {node: '>= 12.17.0'}
     hasBin: true
 
@@ -1162,7 +1162,7 @@ snapshots:
     dependencies:
       http-server: 14.1.1(debug@4.4.1(supports-color@7.2.0))(supports-color@7.2.0)
       leb128: 0.0.5
-      zx: 8.8.3
+      zx: 8.8.5
     transitivePeerDependencies:
       - debug
       - supports-color
@@ -1271,4 +1271,4 @@ snapshots:
 
   yallist@4.0.0: {}
 
-  zx@8.8.3: {}
+  zx@8.8.5: {}
