@@ -615,8 +615,8 @@ packages:
   whatwg-url@5.0.0:
     resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
 
-  ws@8.18.2:
-    resolution: {integrity: sha512-DMricUmwGZUVr++AEAe2uiVM7UoO9MAVZMDu05UQOaUII0lp+zOzLLU4Xqh/JvTqklB1T4uELaaPBKyjE1r4fQ==}
+  ws@8.22.0:
+    resolution: {integrity: sha512-Ydggc987+RO0AnWtZ/7Wq9FtNvcrL1b/RO0ud9mWjUPgDrsAAwQSF51sm2hm1XofbU/4jkpGEsLFsZZxU+1DOg==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -755,7 +755,7 @@ snapshots:
     dependencies:
       pro_self_extracting_wasm: 0.0.9(debug@4.4.1(supports-color@7.2.0))(supports-color@7.2.0)
       stoppable: 1.1.0
-      ws: 8.18.2
+      ws: 8.22.0
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -1204,7 +1204,7 @@ snapshots:
       tr46: 0.0.3
       webidl-conversions: 3.0.1
 
-  ws@8.18.2: {}
+  ws@8.22.0: {}
 
   yallist@4.0.0: {}
 
