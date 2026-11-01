@@ -1,0 +1,130 @@
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+// ┃ ██████ ██████ ██████       █      █      █      █      █ █▄  ▀███ █       ┃
+// ┃ ▄▄▄▄▄█ █▄▄▄▄▄ ▄▄▄▄▄█  ▀▀▀▀▀█▀▀▀▀▀ █ ▀▀▀▀▀█ ████████▌▐███ ███▄  ▀█ █ ▀▀▀▀▀ ┃
+// ┃ █▀▀▀▀▀ █▀▀▀▀▀ █▀██▀▀ ▄▄▄▄▄ █ ▄▄▄▄▄█ ▄▄▄▄▄█ ████████▌▐███ █████▄   █ ▄▄▄▄▄ ┃
+// ┃ █      ██████ █  ▀█▄       █ ██████      █      ███▌▐███ ███████▄ █       ┃
+// ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+// ┃ Copyright (c) 2017, the Perspective Authors.                              ┃
+// ┃ ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌ ┃
+// ┃ This file is part of the Perspective library, distributed under the terms ┃
+// ┃ of the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). ┃
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+perspective-viewer,
+perspective-workspace,
+perspective-copy-menu,
+perspective-export-menu,
+perspective-dropdown,
+perspective-date-column-style,
+perspective-datetime-column-style,
+perspective-number-column-style,
+perspective-string-column-style {
+    @include perspective-viewer-base--icons;
+    @include perspective-viewer-base--colors;
+    @include perspective-viewer-base--datagrid;
+}
+
+@mixin perspective-viewer-base--colors {
+    color: #161616;
+    background-color: transparent;
+    --icon--color: #161616;
+    --inactive--color: #ababab;
+    --inactive--border-color: #dadada;
+
+    --root--background: #ffffff;
+    --active--color: #2670a9;
+    --error--color: #ff471e;
+    --plugin--background: #ffffff;
+    --overflow-hint-icon--color: rgba(0, 0, 0, 0.2);
+    --select--background-color: none;
+    --column-drop-container--background: none;
+    --warning--background: #042121;
+    --warning--color: #fdfffd;
+
+    // TODO deprecate me
+    --overflow-hint-icon--color: #fdfffd;
+}
+
+@mixin perspective-viewer-base--icons {
+    --column-type-integer--mask-image: url("../svg/number-type.svg");
+    --column-type-float--mask-image: var(--column-type-integer--mask-image);
+    --column-type-string--mask-image: url("../svg/string-type.svg");
+    --column-type-date--mask-image: url("../svg/date-type.svg");
+    --column-type-boolean--mask-image: url("../svg/boolean-type.svg");
+    --column-type-datetime--mask-image: var(--column-type-date--mask-image);
+    --column-drag-handle--mask-image: url("../svg/drag-handle.svg");
+    --column-radio-on--mask-image: url("../svg/radio-on.svg");
+    --column-radio-hover--mask-image: url("../svg/radio-hover.svg");
+    --column-radio-off--mask-image: url("../svg/radio-off.svg");
+    --column-checkbox-on--mask-image: url("../svg/checkbox-on.svg");
+    --column-checkbox-hover--mask-image: url("../svg/checkbox-hover.svg");
+    --column-checkbox-off--mask-image: url("../svg/checkbox-off.svg");
+    --column-settings-icon--mask-image: url("../svg/column-settings-icon.svg");
+    --sort-asc-icon--mask-image: url("../svg/sort-asc-icon.svg");
+    --sort-desc-icon--mask-image: url("../svg/sort-desc-icon.svg");
+    --sort-col-asc-icon--mask-image: url("../svg/sort-col-asc-icon.svg");
+    --sort-col-desc-icon--mask-image: url("../svg/sort-col-desc-icon.svg");
+    --sort-abs-asc-icon--mask-image: url("../svg/sort-abs-asc-icon.svg");
+    --sort-abs-desc-icon--mask-image: url("../svg/sort-abs-desc-icon.svg");
+    --sort-abs-col-asc-icon--mask-image: url("../svg/sort-abs-col-asc-icon.svg");
+    --sort-abs-col-desc-icon--mask-image: url("../svg/sort-abs-col-desc-icon.svg");
+    --sort-none-icon--mask-image: url("../svg/sort-none-icon.svg");
+    --add-expression-icon--mask-image: url("../svg/expression.svg");
+    --close-icon--mask-image: url("../svg/close-icon.svg");
+    --inactive-column-selector--content: url("../svg/checkbox-unchecked-icon.svg");
+    --active-column-selector--content: url("../svg/checkbox-checked-icon.svg");
+    --select-arrow-light--background-image: url("../svg/dropdown-selector-light.svg");
+    --select-arrow-dark--background-image: url("../svg/dropdown-selector.svg");
+    --overflow-hint-icon--content: "!";
+    --reset-button-icon--content: "refresh";
+    --save-button-icon--content: "save";
+
+    --updating-icon--mask-image: url("../svg/updating.gif");
+    --downloading-icon--mask-image: url("../svg/downloading.gif");
+    --status-ok-icon--mask-image: url(../svg/status_ok.svg);
+    --export-icon--mask-image: url("../svg/export-icon.svg");
+    --free-scroll-icon--mask-image: url("../svg/free-scroll-icon.svg");
+    --reset-icon--mask-image: url("../svg/revert-icon.svg");
+    --copy-icon--mask-image: url("../svg/duplicate-icon.svg");
+    --theme-icon--mask-image: url("../svg/theme-icon.svg");
+
+    --drawer-tab-icon--mask-image: url(../svg/drawer-tab.svg);
+    --drawer-tab-icon--hover--mask-image: url(../svg/drawer-tab-hover.svg);
+    --drawer-tab-inverted-icon--mask-image: url(../svg/drawer-tab-invert.svg);
+    --drawer-tab-inverted-icon--hover--mask-image: url(../svg/drawer-tab-invert-hover.svg);
+
+    --plugin--background--pattern: url(../svg/bg-pattern.png);
+    --sidebar--background: var(--plugin--background)
+        var(--plugin--background--pattern);
+
+    // Plugin Selector
+    --plugin-selector-candlestick--content: url(../svg/mega-menu-icons-candlestick.svg);
+    --plugin-selector-heatmap--content: url(../svg/mega-menu-icons-heatmap.svg);
+    --plugin-selector-map-scatter--content: url(../svg/mega-menu-icons-map-scatter.svg);
+    --plugin-selector-ohlc--content: url(../svg/mega-menu-icons-ohlc.svg);
+    --plugin-selector-sunburst--content: url(../svg/mega-menu-icons-sunburst.svg);
+    --plugin-selector-treemap--content: url(../svg/mega-menu-icons-treemap.svg);
+    --plugin-selector-x-bar--content: url(../svg/mega-menu-icons-x-bar.svg);
+    --plugin-selector-x-y-line--content: url(../svg/mega-menu-icons-x-y-line.svg);
+    --plugin-selector-x-y-scatter--content: url(../svg/mega-menu-icons-x-y-scatter.svg);
+    --plugin-selector-y-area--content: url(../svg/mega-menu-icons-y-area.svg);
+    --plugin-selector-y-bar--content: url(../svg/mega-menu-icons-y-bar.svg);
+    --plugin-selector-y-line--content: url(../svg/mega-menu-icons-y-line.svg);
+    --plugin-selector-y-scatter--content: url(../svg/mega-menu-icons-y-scatter.svg);
+    --plugin-selector-datagrid--content: url(../svg/mega-menu-icons-datagrid.svg);
+}
+
+@mixin perspective-viewer-base--datagrid {
+    // `regular-table` icons
+    --column-style-open-button--content: "style";
+    --column-style-close-button--content: ">\00a0 style";
+    --tree-label-collapse--content: "-";
+    --tree-label-expand--content: "+";
+    --toolbar-scroll-lock--content: url("../svg/free-scroll-icon.svg");
+    --toolbar-scroll-lock-active--content: url("../svg/align-scroll-icon.svg");
+    --toolbar-edit-mode--read-only--content: url("../svg/read-only-icon.svg");
+    --toolbar-edit-mode--edit--content: url("../svg/editable-icon.svg");
+    --toolbar-edit-mode--select-row--content: url("../svg/datagrid-select-row.svg");
+    --toolbar-edit-mode--select-column--content: url("../svg/datagrid-select-column.svg");
+    --toolbar-edit-mode--select-region--content: url("../svg/datagrid-select-region.svg");
+}

@@ -1,0 +1,319 @@
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+// ┃ ██████ ██████ ██████       █      █      █      █      █ █▄  ▀███ █       ┃
+// ┃ ▄▄▄▄▄█ █▄▄▄▄▄ ▄▄▄▄▄█  ▀▀▀▀▀█▀▀▀▀▀ █ ▀▀▀▀▀█ ████████▌▐███ ███▄  ▀█ █ ▀▀▀▀▀ ┃
+// ┃ █▀▀▀▀▀ █▀▀▀▀▀ █▀██▀▀ ▄▄▄▄▄ █ ▄▄▄▄▄█ ▄▄▄▄▄█ ████████▌▐███ █████▄   █ ▄▄▄▄▄ ┃
+// ┃ █      ██████ █  ▀█▄       █ ██████      █      ███▌▐███ ███████▄ █       ┃
+// ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+// ┃ Copyright (c) 2017, the Perspective Authors.                              ┃
+// ┃ ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌ ┃
+// ┃ This file is part of the Perspective library, distributed under the terms ┃
+// ┃ of the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). ┃
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+@mixin icon {
+    background-repeat: no-repeat;
+    background-color: var(--icon--color);
+    content: "";
+    display: inline-block;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+}
+
+:host {
+    #column-style-container {
+        outline: none;
+        user-select: none;
+
+        &.no-style {
+            font-style: italic;
+            background-color: #8b868045;
+        }
+
+        .is-default-value .dropdown-width-container {
+            background-color: var(--plugin--background);
+        }
+
+        .dropdown-width-container {
+            cursor: pointer;
+            height: 24px;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            padding: 0 8px;
+            border-radius: 2px;
+            // border: 1px solid transparent;
+            border-color: var(--inactive--color, #666);
+
+            &:hover {
+                background-color: var(--plugin--background);
+            }
+        }
+
+        select {
+            cursor: pointer;
+            font-size: 10px;
+            height: 22px;
+            // padding-bottom: 2px;
+            // border-bottom: 1px solid var(--input--border-color, #ccc);
+            padding: 0 8px;
+        }
+
+        label {
+            display: block;
+            font-size: var(--label--font-size, 0.75em);
+            margin: 4px 0 2px 0;
+            width: 100%;
+        }
+
+        span.reset-default-style-disabled {
+            margin-left: 4px;
+            width: 14px;
+            height: 14px;
+            border: 1px solid var(--inactive--border-color);
+            border-radius: 2px;
+        }
+
+        span.reset-default-style {
+            cursor: pointer;
+            width: 22px;
+            height: 22px;
+            margin-right: -4px;
+
+            &:before {
+                @include icon;
+                width: 22px;
+                height: 22px;
+                -webkit-mask-image: var(--close-icon--mask-image);
+                mask-image: var(--close-icon--mask-image);
+            }
+        }
+
+        .is-default-value input.parameter {
+            background-color: var(--plugin--background);
+        }
+
+        input.parameter {
+            background: none;
+            color: inherit;
+            border: 0px solid transparent;
+            outline: none;
+        }
+
+        input.parameter[type="number"] {
+            flex: 1 1 auto;
+            text-align: left;
+            font-family: inherit;
+            width: 0;
+            border-radius: 2px;
+            font-size: 10px;
+            height: 24px;
+            padding-left: 8px;
+            border-width: 1px;
+            border-color: var(
+                --input--border-color,
+                var(--inactive--color, inherit)
+            );
+        }
+
+        input.parameter.parameter-min[type="number"] {
+            border-radius: 2px 0 0 2px;
+        }
+
+        input.parameter.parameter-max[type="number"] {
+            border-radius: 0 2px 2px 0;
+            border-left-width: 0px;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            opacity: 1;
+            background: transparent;
+            background-color: transparent;
+        }
+
+        .column-style-label {
+            display: flex;
+            padding: 4px 0px;
+        }
+
+        .indent {
+            margin-left: 24px;
+        }
+
+        input[type="radio"] {
+            appearance: none;
+
+            &:checked:before {
+                -webkit-mask-image: var(--column-radio-on--mask-image);
+                mask-image: var(--column-radio-on--mask-image);
+            }
+
+            &:before {
+                @include icon;
+                width: 10px;
+                height: 10px;
+                -webkit-mask-image: var(--column-radio-off--mask-image);
+                mask-image: var(--column-radio-off--mask-image);
+            }
+
+            &:hover:before {
+                -webkit-mask-image: var(--column-radio-hover--mask-image);
+                mask-image: var(--column-radio-hover--mask-image);
+            }
+        }
+
+        div.section {
+            display: flex;
+            align-items: center;
+            flex: 1 1 100%;
+        }
+
+        div.bool-field {
+            display: flex;
+            label {
+                padding: 0 8px;
+            }
+        }
+
+        div.inner_section {
+            margin-top: 4px;
+            width: 0px;
+            margin-bottom: 8px;
+            flex: 1 1 100%;
+        }
+
+        div.row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        fieldset {
+            margin: 0;
+        }
+
+        fieldset.style-control {
+            border: none;
+            padding: 0px 0;
+        }
+
+        .color-gradient-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            flex: 1 1 100%;
+            .color-thermometer {
+                flex: 1 1 auto;
+                height: 24px;
+            }
+        }
+
+        .color-selector {
+            display: grid;
+
+            input {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            .color-label {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 14px;
+                grid-column: 1;
+                grid-row: 1;
+                margin: 0;
+                font-family: var(--button--font-family, inherit);
+                color: var(--sign--color, white);
+                width: 36px;
+                height: 24px;
+                text-align: center;
+                z-index: 1;
+            }
+        }
+
+        input[type="color"] {
+            width: 100%;
+            height: 24px;
+            cursor: pointer;
+            padding: 0;
+            font-family: inherit;
+            overflow: hidden;
+            border-radius: 12px;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            &.pos-color-param {
+                width: 36px;
+                border-radius: 12px 0 0 12px;
+                margin: 0 1px 0 0;
+            }
+
+            &.neg-color-param {
+                width: 36px;
+                border-radius: 0 12px 12px 0;
+                margin: 0 0 0 1px;
+            }
+        }
+
+        ::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        ::-webkit-color-swatch {
+            border: 0;
+            border-radius: 0;
+        }
+
+        ::-moz-color-swatch,
+        ::-moz-focus-inner {
+            border: 0;
+        }
+
+        ::-moz-focus-inner {
+            padding: 0;
+        }
+
+        .operator {
+            font-family: inherit;
+            white-space: pre;
+        }
+
+        input[disabled]:before {
+            opacity: 0.5;
+        }
+
+        input.parameter[disabled] {
+            opacity: 0.5;
+        }
+
+        button#datetime_format {
+            appearance: none;
+            background: none;
+            color: inherit;
+            border: 1px solid var(--inactive--color);
+            border-radius: 3px;
+            font-family: inherit;
+            padding: 6px;
+            font-size: 10px;
+            width: 100%;
+            cursor: pointer;
+
+            &:before {
+                content: attr(data-title);
+            }
+
+            &:hover {
+                border-color: var(--icon--color);
+                background-color: var(--icon--color);
+                color: var(--plugin--background);
+            }
+
+            &:hover:before {
+                content: attr(data-title-hover);
+            }
+        }
+    }
+}

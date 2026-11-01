@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "module": "ESNext",
+        "target": "ESNext",
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "outDir": "./dist/esm",
+        "rootDir": "./src/ts",
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "typeRoots": ["./node_modules/@types"]
+    },
+    "files": ["src/ts/perspective-viewer.ts"]
+}

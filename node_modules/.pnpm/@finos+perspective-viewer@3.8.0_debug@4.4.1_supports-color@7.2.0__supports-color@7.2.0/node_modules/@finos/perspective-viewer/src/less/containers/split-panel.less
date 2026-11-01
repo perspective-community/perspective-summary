@@ -1,0 +1,80 @@
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+// ┃ ██████ ██████ ██████       █      █      █      █      █ █▄  ▀███ █       ┃
+// ┃ ▄▄▄▄▄█ █▄▄▄▄▄ ▄▄▄▄▄█  ▀▀▀▀▀█▀▀▀▀▀ █ ▀▀▀▀▀█ ████████▌▐███ ███▄  ▀█ █ ▀▀▀▀▀ ┃
+// ┃ █▀▀▀▀▀ █▀▀▀▀▀ █▀██▀▀ ▄▄▄▄▄ █ ▄▄▄▄▄█ ▄▄▄▄▄█ ████████▌▐███ █████▄   █ ▄▄▄▄▄ ┃
+// ┃ █      ██████ █  ▀█▄       █ ██████      █      ███▌▐███ ███████▄ █       ┃
+// ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+// ┃ Copyright (c) 2017, the Perspective Authors.                              ┃
+// ┃ ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌ ┃
+// ┃ This file is part of the Perspective library, distributed under the terms ┃
+// ┃ of the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). ┃
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+:host {
+    #modal_panel.split-panel.orient-reverse
+        > .split-panel-child:not(:last-child):not(.is-width-override) {
+        max-width: 350px;
+    }
+
+    .split-panel.orient-reverse
+        > .split-panel-child:not(:last-child):not(.is-width-override) {
+        max-width: 300px;
+    }
+
+    .split-panel {
+        display: flex;
+        height: 100%;
+        width: 100%;
+
+        &.orient-vertical {
+            flex-direction: column;
+
+            & > .split-panel-child {
+                flex: 0 1 auto;
+            }
+
+            & > .split-panel-divider:hover {
+                cursor: row-resize;
+            }
+        }
+
+        &.orient-reverse {
+            flex-direction: row-reverse;
+        }
+
+        &.orient-vertical.orient-reverse {
+            flex-direction: column-reverse;
+        }
+
+        & > * {
+            flex: 0 1 auto;
+        }
+
+        &:not(.orient-vertical) > *:first-child {
+            flex: 0 0 auto;
+        }
+
+        // The thing you click to drag the panel size.
+        .split-panel-divider {
+            flex: 0 0 6px;
+            transition: background-color 0.2s ease-out;
+            z-index: var(--settings-panel-z-index);
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.05);
+                cursor: col-resize;
+            }
+        }
+
+        // Make the elements embedded in each child stretch to fill the
+        // container
+        .split-panel-child {
+            position: relative;
+            display: flex;
+
+            & > * {
+                flex: 1 1 auto;
+            }
+        }
+    }
+}
