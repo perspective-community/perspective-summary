@@ -1,3 +1,5 @@
+# Note: Archived and a [better version available upstream](https://github.com/perspective-dev/perspective/pull/3296)
+
 # perspective-summary
 
 A `perspective-viewer` plugin that provides summary information.
